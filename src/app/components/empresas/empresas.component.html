@@ -1,0 +1,40 @@
+
+<div class="fondo">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center text-white">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0"> <img class="align-middle" src="/assets/img/guatemala.png" alt="">  Sucursales Guatemala</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link" routerLink=""  aria-current="page">Inicio</a>
+            <a class="nav-link " routerLink="/login">Ingresar</a>
+            <a class="nav-link active" >Empresas</a>
+          </nav>
+        </div>
+      </header>
+        </div>
+</div>
+
+<div class="row py-5">
+  <div class="col-lg-11 mx-auto">
+    <div class="p-5 shadow-sm rounded banner text-white text-center">
+          <h1 class="display-1 ">Empresas</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 col-md-12 py-3" *ngFor="let emp of EmpresasModelGet">
+      <div class="card text-center mb-12 tarjeta">
+        <h5 class="card-header header-tarjeta">{{ emp._id }}</h5>
+        <div class="card-body">
+          <h5 class="card-title">{{emp.nombreEmpresa}}</h5>
+          <p class="card-text">Tipo: {{emp.tipo}}</p>
+          <a  class="btn btn-warning mx-2 ">Editar</a>
+          <a  class="btn btn-danger text-dark  mx-2">Eliminar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
