@@ -67,11 +67,9 @@
 
           <div>
             <label for="inputNombre" class="form-label">Tipo</label>
-            <select class="form-select" name="tipo" #tipo="ngModel" [(ngModel)]="EmpresaModelPost.tipo" aria-label="Default select example">
-              <option selected >Restaurante</option>
-              <option value="Distribuidora" >Distribuidora</option>
-              <option value="Banco">Banco</option>
-              <option value="Supermercado">Supermercado</option>
+            <select class="form-select" name="tipo" #tipo="ngModel"  [(ngModel)]="EmpresaModelPost.tipo" aria-label="Default select example">
+              <option selected ></option>
+              <option *ngFor="let tipo of tipos" value="{{ tipo.nombreTipo }}" >{{ tipo.nombreTipo }}</option>
             </select>
           </div>
         </form>

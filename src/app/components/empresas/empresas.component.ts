@@ -10,6 +10,13 @@ import { EmpresasService } from 'src/app/services/empresas.service';
 })
 export class EmpresasComponent implements OnInit {
 
+  tipos = [
+    { nombreTipo: "Restaurante" },
+    { nombreTipo: "Distribuidora" },
+    { nombreTipo: "Banco" },
+    { nombreTipo: "Supermercado" }
+  ];
+
   //Usuarios
   public EmpresasModelGet: Usuarios;
   public EmpresaModelPost: Usuarios;
