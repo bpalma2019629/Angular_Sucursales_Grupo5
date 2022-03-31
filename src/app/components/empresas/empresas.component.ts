@@ -12,10 +12,11 @@ export class EmpresasComponent implements OnInit {
 
   //Usuarios
   public EmpresasModelGet: Usuarios;
+  public EmpresaModelPost: Usuarios;
 
   constructor(private _EmpresasService: EmpresasService) {
-
-   }
+    this.EmpresaModelPost = new Usuarios('','','','','','',[{nombreProducto: '', nombreProveedor: '', stock:0}]);
+  }
 
   ngOnInit(): void {
     this.getEmpresas();
@@ -30,6 +31,18 @@ export class EmpresasComponent implements OnInit {
       },
       (error)=>{
         console.log(<any>error)
+      }
+    )
+  }
+
+  postEmpresas(){
+    this._EmpresasService.agregarEmpresas(this.EmpresaModelPost).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getEmpresas();
+      },
+      (error)=>{
+        console.log(<any>error);
       }
     )
   }

@@ -15,4 +15,10 @@ export class EmpresasService {
   obtenerEmpresas(): Observable<any>{
     return this._http.get(this.url + '/empresas', { headers: this.headersVariable })
   }
+
+  agregarEmpresas(modeloUsuario: Usuarios): Observable<any>{
+    let parametros = JSON.stringify(modeloUsuario);
+
+    return this._http.post(this.url+'/registrar', parametros, {headers: this.headersVariable})
+  }
 }

@@ -8,7 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +21,7 @@ import { EmpresasComponent } from './components/empresas/empresas.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

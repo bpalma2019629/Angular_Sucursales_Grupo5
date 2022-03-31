@@ -23,6 +23,7 @@
 </div>
 
 <div class="container">
+  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpresa">Agregar Empresa</button>
 
   <div class="row">
     <div class="col-12 col-md-12 py-3" *ngFor="let emp of EmpresasModelGet">
@@ -31,9 +32,53 @@
         <div class="card-body">
           <h5 class="card-title">{{emp.nombreEmpresa}}</h5>
           <p class="card-text">Tipo: {{emp.tipo}}</p>
+          <a  class="btn btn-success mx-2 ">Ver</a>
           <a  class="btn btn-warning mx-2 ">Editar</a>
           <a  class="btn btn-danger text-dark  mx-2">Eliminar</a>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Agregar Empresa-->
+<div class="modal fade" id="modalAgregarEmpresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Empresa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Empresa</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombreEmpresa" #nombreEmpresa="ngModel" [(ngModel)]="EmpresaModelPost.nombreEmpresa">
+          </div>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="inputNombre" name="usuario" #usuario="ngModel" [(ngModel)]="EmpresaModelPost.usuario">
+          </div>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputNombre" name="password" #password="ngModel" [(ngModel)]="EmpresaModelPost.password">
+          </div>
+
+          <div>
+            <label for="inputNombre" class="form-label">Tipo</label>
+            <select class="form-select" name="tipo" #tipo="ngModel" [(ngModel)]="EmpresaModelPost.tipo" aria-label="Default select example">
+              <option selected >Restaurante</option>
+              <option value="Distribuidora" >Distribuidora</option>
+              <option value="Banco">Banco</option>
+              <option value="Supermercado">Supermercado</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postEmpresas()" data-bs-dismiss="modal">Agregar</button>
       </div>
     </div>
   </div>
