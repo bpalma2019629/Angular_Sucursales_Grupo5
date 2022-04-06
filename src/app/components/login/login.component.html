@@ -31,14 +31,14 @@
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">Login</h4>
                                         <div class="form-group">
-                                            <input type="email" name="logemail" class="form-style" placeholder="Email" id="logemail " autocomplete="off">
+                                            <input type="email" name="logemail" class="form-style" placeholder="Email" id="logemail " autocomplete="off"  [(ngModel)]="usuarioModel.usuario">
                                             <i class="bi bi-envelope"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style" placeholder="Contraseña" id="logpass" autocomplete="off">
+                                            <input type="password" name="logpass" class="form-style" placeholder="Contraseña" id="logpass" autocomplete="off" [(ngModel)]="usuarioModel.password">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
-                                        <a routerLink="/empresas" routerLinkActive="active" class="btn mt-4">Ingresar</a>
+                                        <a (click)="login()" type="submit" class="btn mt-4">Ingresar</a>
                                         <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Olvidaste tu contraseña?</a></p>
                                       </div>
                                   </div>
@@ -48,18 +48,23 @@
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">Registrarse</h4>
                                         <div class="form-group">
-                                            <input type="text" name="logname" class="form-style" placeholder="Nombre de la Empresa" id="logname" autocomplete="off">
+                                            <input type="text" name="logname" class="form-style" placeholder="Nombre de la Empresa" id="logname" autocomplete="off" [(ngModel)]="usuarioModel.nombreEmpresa">
                                             <i class="input-icon uil uil-user"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="email" name="logemail" class="form-style" placeholder="Email" id="logemail" autocomplete="off">
+                                          <select class="form-style" name="tipo" #tipo="ngModel"  [(ngModel)]="usuarioModel.tipo">
+                                            <option class="opciones" *ngFor="let tipo of tipos" value="{{ tipo.nombreTipo }}" >{{ tipo.nombreTipo }}</option>
+                                          </select>
+                                      </div>
+                                        <div class="form-group mt-2">
+                                            <input type="email" name="logemail" class="form-style" placeholder="Email" id="logemail" autocomplete="off" [(ngModel)]="usuarioModel.usuario">
                                             <i class="input-icon uil uil-at"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style" placeholder="Contraseña" id="logpass" autocomplete="off">
+                                            <input type="password" name="logpass" class="form-style" placeholder="Contraseña" id="logpass" autocomplete="off" [(ngModel)]="usuarioModel.password">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
-                                        <a routerLink="/empresas" routerLinkActive="active" class="btn mt-4">Ingresar</a>
+                                        <a  (click)="postEmpresas()" type="submit" class="btn mt-4">Ingresar</a>
                                       </div>
                                   </div>
                               </div>
