@@ -34,7 +34,7 @@
           <p class="card-text">Tipo: {{emp.tipo}}</p>
           <a  class="btn btn-success mx-2 ">Ver</a>
           <a  class="btn btn-warning mx-2 ">Editar</a>
-          <a  class="btn btn-danger text-dark  mx-2">Eliminar</a>
+          <button  class="btn btn-danger text-dark  mx-2" (click)="deleteEmpresas(emp._id)">Eliminar</button>
         </div>
       </div>
     </div>

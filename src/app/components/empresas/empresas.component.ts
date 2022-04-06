@@ -54,4 +54,17 @@ export class EmpresasComponent implements OnInit {
     )
   }
 
+  deleteEmpresas(idEmpresa){
+    this._EmpresasService.eliminarEmpresa(idEmpresa).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getEmpresas();
+      },
+      (error)=>{
+        console.log(<any>error);
+
+      }
+    )
+  }
+
 }
