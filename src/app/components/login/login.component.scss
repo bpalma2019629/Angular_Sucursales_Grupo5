@@ -169,6 +169,13 @@ h6 span{
   transition: all 200ms linear;
   box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
 }
+
+.opciones{
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+}
+
 .form-style:focus,
 .form-style:active {
   border: none;
