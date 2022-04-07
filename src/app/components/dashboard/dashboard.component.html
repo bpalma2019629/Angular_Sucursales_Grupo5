@@ -27,8 +27,8 @@
   <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursal">Agregar Sucursal</button>
 
   <div class="row">
-    <div class="col-12 col-md-12 py-3" *ngFor="let suc of sucursalesModelGet">
-      <div class="card text-center mb-12 tarjeta">
+    <div class="col-12 col-md-4 py-3" *ngFor="let suc of sucursalesModelGet">
+      <div class="card text-center mb-4 tarjeta">
         <h5 class="card-header header-tarjeta">{{ suc._id }}</h5>
         <div class="card-body">
           <h5 class="card-title">{{suc.nombreSucursal}}</h5>
