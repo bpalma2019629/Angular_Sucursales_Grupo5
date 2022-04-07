@@ -58,8 +58,16 @@ export class EmpresasService {
     return this._http.post(this.url+'/registrar', parametros, {headers: this.headersVariable})
   }
 
-  eliminarEmpresa(id : String): Observable<any> {
+  agregarEmpresasAdmin(modeloUsuario: Usuarios, token): Observable<any>{
+    let headersToken = this.headersVariable.set('Authorization',token)
+    let parametros = JSON.stringify(modeloUsuario);
 
-    return this._http.delete(this.url + '/eliminarUsuario/' + id, { headers: this.headersVariable })
+    return this._http.post(this.url+'/agregarEmpresa', parametros, {headers: headersToken})
+  }
+
+  eliminarEmpresa(id : String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token)
+
+    return this._http.delete(this.url + '/eliminarUsuario/' + id, { headers: headersToken })
   }
 }
