@@ -1,391 +1,78 @@
-<!--Brandon Palma 2019629-->
-<!--Navbar Enrique Hurtarte 2020020-->
+
 <div class="fondo">
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center text-white">
       <header class="mb-auto">
         <div>
           <h3 class="float-md-start mb-0"> <img class="align-middle" src="/assets/img/guatemala.png" alt="">  Sucursales Guatemala</h3>
           <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link" routerLink=""  aria-current="page" href="#">Inicio</a>
-            <a class="nav-link " routerLink="/login" href="#">Ingresar</a>
-            <a class="nav-link active" href="#">Dashboard</a>
+            <a class="nav-link" routerLink=""  aria-current="page">Inicio</a>
+            <a class="nav-link " routerLink="/login">Ingresar</a>
+            <a class="nav-link" routerLink="/empresas" >Empresas</a>
+            <a class="nav-link active" >sucursales</a>
           </nav>
         </div>
       </header>
         </div>
 </div>
 
-<div class="container-fluid">
-  <div class="px-lg-5">
+<div class="row py-5">
+  <div class="col-lg-11 mx-auto">
+    <div class="p-5 shadow-sm rounded banner text-white text-center">
+          <h1 class="display-1 ">Sucursales</h1>
+    </div>
+  </div>
+</div>
 
-    <!-- For demo purpose -->
-    <div class="row py-5">
-      <div class="col-lg-11 mx-auto">
-        <div class="p-5 shadow-sm rounded banner letra">
-          <div class="clearfix">
-              <img src="/assets/img/PolloCampero_Logo.png" class="img-banner col-md-6 float-md-end mb-3 ms-md-3" alt="...">
-              <h1 class="display-1 ">Sucursales Pollo Campero</h1>
-            </div>
+<div class="container">
+  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursal">Agregar Sucursal</button>
+
+  <div class="row">
+    <div class="col-12 col-md-12 py-3" *ngFor="let suc of sucursalesModelGet">
+      <div class="card text-center mb-12 tarjeta">
+        <h5 class="card-header header-tarjeta">{{ suc._id }}</h5>
+        <div class="card-body">
+          <h5 class="card-title">{{suc.nombreSucursal}}</h5>
+          <p class="card-text">direccion: {{suc.direccionSucursal}}</p>
+          <p class="card-text">municipio: {{suc.municipio}}</p>
+          <a  class="btn btn-success mx-2 ">Ver</a>
+          <a  class="btn btn-warning mx-2 ">Editar</a>
+          <button  class="btn btn-danger text-dark  mx-2"  (click)="deleteSucursales(suc._id)">Eliminar</button>
         </div>
       </div>
     </div>
-    <!-- End -->
+  </div>
+</div>
 
-    <div class="row">
-       <!-- Gallery item -->
-       <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
-        <div class="tarjeta rounded shadow-sm"><img src="/assets/img/PolloBolivar.PNG" alt=""
-            class="img-fluid card-img-top">
-          <div class="p-4">
-            <h5> <a class="letra display-4 btn-card"  type="button" data-bs-toggle="modal" data-bs-target="#tarjeta1">Avenida Bolivar</a></h5>
-          </div>
-        </div>
+<!-- Modal Agregar Empresa-->
+<div class="modal fade" id="modalAgregarSucursal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Sucursal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <!-- Button trigger modal -->
-
-      <!-- Modal -->
-      <div class="modal fade" id="tarjeta1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content modal-color">
-            <div class="modal-header letra">
-              <h4 class="modal-title" id="exampleModalLabel">Pollo Campero | Avenida Bolivar</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="mapa">
-                <img src="/assets/img/mapabolivar.JPG" class="img-fluid" alt="...">
-              </div>
-              <hr>
-              <div class="clearfix py-5 mx-auto">
-                <div id="carouselExampleControls" class="carousel slide col-md-7 float-md-end mb-3 ms-md-3" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="/assets/img/PolloBolivar.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloBolivar2.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloBolivar3.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-                </div>
-                <h5>Opciones de Servicio:</h5>
-                <h6>Consumo en el lugar · Para llevar · Entrega sin contacto</h6>
-                <h5>Direccion</h5>
-                <h6>Av. Bolivar, Cdad. de Guatemala</h6>
-                <h5>Telefono</h5>
-                <h6>2363 5555</h6>
-              </div>
-            </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Sucursal</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombreSucursal" #nombreSucursal="ngModel" [(ngModel)]="sucursalesModelPost.nombreSucursal">
           </div>
-        </div>
-      </div>
-      <!-- End -->
-
-      <!-- Gallery item -->
-      <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
-        <div class="tarjeta rounded shadow-sm"><img src="/assets/img/PolloMixcoZ43.PNG" alt=""
-            class="img-fluid card-img-top">
-          <div class="p-4">
-            <h5> <a class="letra display-4 btn-card"  type="button" data-bs-toggle="modal" data-bs-target="#tarjeta2">Naranjo Z.4 Mixco</a></h5>
+          <div class="mb-3">
+            <label for="inputDireccion" class="form-label">Dirrección</label>
+            <input type="text" class="form-control" id="inputDireccion" name="direccionSucursal" #direccionSucursal="ngModel" [(ngModel)]="sucursalesModelPost.direccionSucursal">
           </div>
-        </div>
-      </div>
-      <!-- Button trigger modal -->
-
-      <!-- Modal -->
-      <div class="modal fade" id="tarjeta2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content modal-color">
-            <div class="modal-header letra">
-              <h4 class="modal-title " id="exampleModalLabel">Pollo Campero | Naranjo Z.4 Mixco</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="mapa">
-                <img src="/assets/img/mapazona4mx.PNG" class="img-fluid" alt="...">
-              </div>
-              <hr>
-              <div class="clearfix py-5 mx-auto">
-                <div id="carouselExampleControls2" class="carousel slide col-md-7 float-md-end mb-3 ms-md-3" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="/assets/img/PolloMixcoZ43.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloMixcoZ4.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloMixcoZ42.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-                </div>
-                <h5>Opciones de Servicio:</h5>
-                <h6>Consumo en el lugar · Para llevar · Entrega sin contacto</h6>
-                <h5>Direccion</h5>
-                <h6>MF25+JV8, Cdad. de Guatemala</h6>
-                <h5>Telefono</h5>
-                <h6>2374 1777</h6>
-              </div>
-            </div>
+          <div>
+            <label for="inputMunicipio" class="form-label">Municipio</label>
+            <select class="form-select" id="inputMunicipio" name="municipio" #municipio="ngModel"  [(ngModel)]="sucursalesModelPost.municipio">
+              <option *ngFor="let municipio of municipios" value="{{ municipio.nombre }}" >{{municipio.nombre}}</option>
+            </select>
           </div>
-        </div>
+        </form>
       </div>
-      <!-- End -->
-
-      <!-- Gallery item -->
-      <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
-        <div class="tarjeta rounded shadow-sm"><img src="/assets/img/PolloMega6.PNG" alt=""
-            class="img-fluid card-img-top">
-          <div class="p-4">
-            <h5> <a class="letra display-4 btn-card"  type="button" data-bs-toggle="modal" data-bs-target="#tarjeta3">Mega 6</a></h5>
-          </div>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postSucursales()" data-bs-dismiss="modal">Agregar</button>
       </div>
-      <!-- Button trigger modal -->
-
-      <!-- Modal -->
-      <div class="modal fade" id="tarjeta3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content modal-color">
-            <div class="modal-header letra">
-              <h4 class="modal-title" id="exampleModalLabel">Pollo Campero | Mega 6</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="mapa">
-                <img src="/assets/img/mapamega6.PNG" class="img-fluid" alt="...">
-              </div>
-              <hr>
-              <div class="clearfix py-5 mx-auto">
-                <div id="carouselExampleControls3" class="carousel slide col-md-7 float-md-end mb-3 ms-md-3" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="/assets/img/PolloMega6.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloMega62.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloMega63.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls3" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls3" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-                </div>
-                <h5>Opciones de Servicio:</h5>
-                <h6>Consumo en el lugar · Para llevar · Entrega sin contacto</h6>
-                <h5>Direccion</h5>
-                <h6>15 Avenida, Cdad. de Guatemala</h6>
-                <h5>Telefono</h5>
-                <h6>2373 1777</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End -->
-
-      <!-- Gallery item -->
-      <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
-        <div class="tarjeta rounded shadow-sm"><img src="/assets/img/PolloPalmita.PNG" alt=""
-            class="img-fluid card-img-top">
-          <div class="p-4">
-            <h5> <a class="letra display-4 btn-card"  type="button" data-bs-toggle="modal" data-bs-target="#tarjeta4">La Palmita Z.5</a></h5>
-          </div>
-        </div>
-      </div>
-      <!-- Button trigger modal -->
-
-      <!-- Modal -->
-      <div class="modal fade" id="tarjeta4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content modal-color">
-            <div class="modal-header letra">
-              <h4 class="modal-title" id="exampleModalLabel">Pollo Campero | La Palmita Z.5</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="mapa">
-                <img src="/assets/img/mapapalmita.PNG" class="img-fluid" alt="...">
-              </div>
-              <hr>
-              <div class="clearfix py-5 mx-auto">
-                <div id="carouselExampleControls4" class="carousel slide col-md-7 float-md-end mb-3 ms-md-3" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="/assets/img/PolloPalmita.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloPalmita2.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloPalmita3.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls4" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls4" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-                </div>
-                <h5>Opciones de Servicio:</h5>
-                <h6>Consumo en el lugar · Para llevar · Entrega sin contacto</h6>
-                <h5>Direccion</h5>
-                <h6>avenida La Palmita, 27 Calle, Cdad. de Guatemala</h6>
-                <h5>Telefono</h5>
-                <h6>2374 1777</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End -->
-
-      <!-- Gallery item -->
-      <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
-        <div class="tarjeta rounded shadow-sm"><img src="/assets/img/PolloTerminal.PNG" alt=""
-            class="img-fluid card-img-top">
-          <div class="p-4">
-            <h5> <a class="letra display-4 btn-card"  type="button" data-bs-toggle="modal" data-bs-target="#tarjeta5">La Terminal</a></h5>
-          </div>
-        </div>
-      </div>
-      <!-- Button trigger modal -->
-
-      <!-- Modal -->
-      <div class="modal fade" id="tarjeta5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content modal-color">
-            <div class="modal-header letra">
-              <h4 class="modal-title" id="exampleModalLabel">Pollo Campero | La Terminal</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="mapa">
-                <img src="/assets/img/mapaterminal.PNG" class="img-fluid" alt="...">
-              </div>
-              <hr>
-              <div class="clearfix py-5 mx-auto">
-                <div id="carouselExampleControls5" class="carousel slide col-md-7 float-md-end mb-3 ms-md-3" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="/assets/img/PolloTerminal.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloTerminal2.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloTerminal3.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls5" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls5" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-                </div>
-                <h5>Opciones de Servicio:</h5>
-                <h6>Consumo en el lugar · Para llevar · Entrega sin contacto</h6>
-                <h5>Direccion</h5>
-                <h6>LA TERMINAL, 4 Avenida 6-59, Cdad. de Guatemala</h6>
-                <h5>Telefono</h5>
-                <h6>2374 1777</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End -->
-
-      <!-- Gallery item -->
-      <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
-        <div class="tarjeta rounded shadow-sm"><img src="/assets/img/PolloMetro.PNG" alt=""
-            class="img-fluid card-img-top">
-          <div class="p-4">
-            <h5> <a class="letra display-4 btn-card"  type="button" data-bs-toggle="modal" data-bs-target="#tarjeta6">Metronorte</a></h5>
-          </div>
-        </div>
-      </div>
-      <!-- Button trigger modal -->
-
-      <!-- Modal -->
-      <div class="modal fade" id="tarjeta6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content modal-color">
-            <div class="modal-header letra">
-              <h4 class="modal-title" id="exampleModalLabel">Pollo Campero | Metronorte</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="mapa">
-                <img src="/assets/img/mapametronorte.PNG" class="img-fluid" alt="...">
-              </div>
-              <hr>
-              <div class="clearfix py-5 mx-auto">
-                <div id="carouselExampleControls6" class="carousel slide col-md-7 float-md-end mb-3 ms-md-3" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="/assets/img/PolloMetro.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloMetro2.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="/assets/img/PolloMetro3.PNG" class="d-block w-100 tarjeta" alt="...">
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls6" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls6" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-                </div>
-                <h5>Opciones de Servicio:</h5>
-                <h6>Consumo en el lugar · Para llevar · Entrega sin contacto</h6>
-                <h5>Direccion</h5>
-                <h6>Km. 5 Carretera al Atlántico, Cdad. de Guatemala</h6>
-                <h5>Telefono</h5>
-                <h6>5864 8184
-                </h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End -->
-
-
+    </div>
+  </div>
 </div>

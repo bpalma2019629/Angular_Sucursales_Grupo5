@@ -31,10 +31,54 @@ export class DashboardComponent implements OnInit {
   ]
 
   public sucursalesModelGet: sucursales;
+  public sucursalesModelPost: sucursales;
+  public token;
 
-  constructor(private _dashboardService: DashboardService) { }
+  constructor(private _dashboardService: DashboardService) {
+    this.sucursalesModelPost = new sucursales('','', '', '', '')
+    this.token = this._dashboardService.obtenerToken()
+   }
+
+   getSucursales(){
+    this._dashboardService.obtenerSucursales(this._dashboardService.obtenerToken()).subscribe(
+      (response) => {
+        this.sucursalesModelGet = response.sucursales;
+        console.log(this.sucursalesModelGet);
+
+      },
+      (error)=>{
+        console.log(<any>error)
+      }
+    )
+  }
+
+  postSucursales(){
+    this._dashboardService.agregarSucursal(this.sucursalesModelPost, this._dashboardService.obtenerToken()).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getSucursales();
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  }
+
+  deleteSucursales(idSucursal){
+    this._dashboardService.eliminarSucursal(idSucursal, this._dashboardService.obtenerToken()).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getSucursales();
+      },
+      (error)=>{
+        console.log(<any>error);
+
+      }
+    )
+  }
 
   ngOnInit(): void {
+    this.getSucursales();
   }
 
 
