@@ -32,10 +32,12 @@ export class DashboardComponent implements OnInit {
 
   public sucursalesModelGet: sucursales;
   public sucursalesModelPost: sucursales;
+  public sucursalesModelGetId: sucursales;
   public token;
 
   constructor(private _dashboardService: DashboardService) {
     this.sucursalesModelPost = new sucursales('','', '', '', '')
+    this.sucursalesModelGetId = new sucursales('','', '', '', '')
     this.token = this._dashboardService.obtenerToken()
    }
 
@@ -52,8 +54,32 @@ export class DashboardComponent implements OnInit {
     )
   }
 
+  getSucursalesId(idSucursal){
+    this._dashboardService.obtenerSucursalId(idSucursal).subscribe(
+      (response)=>{
+        console.log(response);
+        this.sucursalesModelGetId = response.sucursales;
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  }
+
   postSucursales(){
     this._dashboardService.agregarSucursal(this.sucursalesModelPost, this._dashboardService.obtenerToken()).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getSucursales();
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  }
+
+  putSucursal(){
+    this._dashboardService.editarSucursal(this.sucursalesModelGetId, this._dashboardService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
         this.getSucursales();

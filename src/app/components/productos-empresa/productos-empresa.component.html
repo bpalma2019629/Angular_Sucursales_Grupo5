@@ -1,0 +1,106 @@
+<div class="fondo">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center text-white">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0"> <img class="align-middle" src="/assets/img/guatemala.png" alt="">  Sucursales Guatemala</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link" routerLink=""  aria-current="page">Inicio</a>
+            <a class="nav-link " routerLink="/login">Ingresar</a>
+            <a class="nav-link" routerLink="/empresas" >Empresas</a>
+            <a class="nav-link" routerLink="/dashboard">Sucursales</a>
+            <a class="nav-link active">Productos</a>
+          </nav>
+        </div>
+      </header>
+        </div>
+</div>
+
+<div class="row py-5">
+  <div class="col-lg-11 mx-auto">
+    <div class="p-5 shadow-sm rounded banner text-white text-center">
+          <h1 class="display-1 ">Productos</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">Agregar Producto</button>
+
+  <div class="row">
+    <div class="col-12 col-md-4 py-3" *ngFor="let prod of productosModelGet">
+      <div class="card text-center mb-4 tarjeta">
+        <h5 class="card-header header-tarjeta">{{ prod._id }}</h5>
+        <div class="card-body">
+          <h5 class="card-title">{{prod.nombreProducto}}</h5>
+          <p class="card-text">proveedor: {{prod.nombreProveedor}}</p>
+          <p class="card-text">stock: {{prod.stock}}</p>
+          <a  class="btn btn-success mx-2 ">Ver</a>
+
+          <button type="button" class="btn btn-warning mx-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample" (click)="getProductosId(prod._id)">
+              Editar
+          </button>
+
+          <button  class="btn btn-danger text-dark  mx-2"  (click)="deleteProductos(prod._id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Agregar Producto-->
+<div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Nombre Producto</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombreProducto" #nombreProducto="ngModel" [(ngModel)]="productosModelPost.nombreProducto">
+          </div>
+          <div class="mb-3">
+            <label for="inputDireccion" class="form-label">Nombre Proveedor</label>
+            <input type="text" class="form-control" id="inputDireccion" name="nombreProveedor" #nombreProveedor="ngModel" [(ngModel)]="productosModelPost.nombreProveedor">
+          </div>
+          <div class="mb-3">
+            <label for="inputDireccion" class="form-label">Stock</label>
+            <input type="number" min="1" class="form-control" id="inputDireccion" name="stock" #stock="ngModel" [(ngModel)]="productosModelPost.stock">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postProductos()" data-bs-dismiss="modal">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OffCanvas Editar Producto -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Nombre Producto</label>
+        <input type="text" class="form-control" id="inputNombre" name="nombreProducto" #nombreProducto="ngModel" [(ngModel)]="productosModelGetId.nombreProducto">
+      </div>
+      <div class="mb-3">
+        <label for="inputDireccion" class="form-label">Nombre Proveedor</label>
+        <input type="text" class="form-control" id="inputDireccion" name="nombreProveedor" #nombreProveedor="ngModel" [(ngModel)]="productosModelGetId.nombreProveedor">
+      </div>
+      <div class="mb-3">
+        <label for="inputDireccion" class="form-label">Stock</label>
+        <input type="number" min="0" class="form-control" id="inputDireccion" name="stock" #stock="ngModel" [(ngModel)]="productosModelGetId.stock">
+      </div>
+      <button class="btn btn-success" (click)="putProducto()" data-bs-dismiss="offcanvas">Editar Producto</button>
+    </form>
+  </div>
+</div>

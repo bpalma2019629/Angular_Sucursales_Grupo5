@@ -8,7 +8,8 @@
             <a class="nav-link" routerLink=""  aria-current="page">Inicio</a>
             <a class="nav-link " routerLink="/login">Ingresar</a>
             <a class="nav-link" routerLink="/empresas" >Empresas</a>
-            <a class="nav-link active" >sucursales</a>
+            <a class="nav-link active">Sucursales</a>
+            <a class="nav-link" routerLink="/productos" >Productos</a>
           </nav>
         </div>
       </header>
@@ -35,7 +36,12 @@
           <p class="card-text">direccion: {{suc.direccionSucursal}}</p>
           <p class="card-text">municipio: {{suc.municipio}}</p>
           <a  class="btn btn-success mx-2 ">Ver</a>
-          <a  class="btn btn-warning mx-2 ">Editar</a>
+
+          <button type="button" class="btn btn-warning mx-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample" (click)="getSucursalesId(suc._id)">
+              Editar
+          </button>
+
           <button  class="btn btn-danger text-dark  mx-2"  (click)="deleteSucursales(suc._id)">Eliminar</button>
         </div>
       </div>
@@ -74,5 +80,32 @@
         <button type="button" class="btn btn-primary" (click)="postSucursales()" data-bs-dismiss="modal">Agregar</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- OffCanvas Editar Sucursal -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Nombre Sucursal</label>
+        <input type="text" class="form-control" id="inputNombre" name="nombreSucursal" #nombreSucursal="ngModel" [(ngModel)]="sucursalesModelGetId.nombreSucursal">
+      </div>
+      <div class="mb-3">
+        <label for="inputDireccion" class="form-label">Dirrección</label>
+        <input type="text" class="form-control" id="inputDireccion" name="direccionSucursal" #direccionSucursal="ngModel" [(ngModel)]="sucursalesModelGetId.direccionSucursal">
+      </div>
+      <div>
+        <label for="inputMunicipio" class="form-label">Municipio</label>
+        <select class="form-select" id="inputMunicipio" name="municipio" #municipio="ngModel"  [(ngModel)]="sucursalesModelGetId.municipio">
+          <option *ngFor="let municipio of municipios" value="{{ municipio.nombre }}" >{{municipio.nombre}}</option>
+        </select>
+      </div>
+      <button class="btn btn-success" (click)="putSucursal()" data-bs-dismiss="offcanvas">Editar Sucursal</button>
+    </form>
   </div>
 </div>
