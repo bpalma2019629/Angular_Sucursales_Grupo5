@@ -19,6 +19,11 @@ export class DashboardService {
     return this._http.get(this.url + '/verSucursalesEmpresa', { headers: headersToken })
   }
 
+  obtenerSucursalId(id : String): Observable<any> {
+
+    return this._http.get(this.url + '/verSucursalesEmpresaId/' + id, { headers: this.headersVariable })
+  }
+
   obtenerSucursalesAdmin(id:String, token): Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token)
 
@@ -30,6 +35,13 @@ export class DashboardService {
     let headersToken = this.headersVariable.set('Authorization', token)
 
     return this._http.post(this.url+'/registrarSucursal', parametros, { headers: headersToken })
+  }
+
+  editarSucursal(modeloSucursal: sucursales, token): Observable<any> {
+    let parametros = JSON.stringify(modeloSucursal);
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.put(this.url + '/editarSucursal/' + modeloSucursal._id, parametros, { headers: headersToken})
   }
 
   eliminarSucursal(id : String, token): Observable<any> {

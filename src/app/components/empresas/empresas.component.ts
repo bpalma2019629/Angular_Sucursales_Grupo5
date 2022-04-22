@@ -22,9 +22,11 @@ export class EmpresasComponent implements OnInit {
   //Usuarios
   public EmpresasModelGet: Usuarios;
   public EmpresaModelPost: Usuarios;
+  public EmpresasModelGetId: Usuarios;
 
   constructor(private _EmpresasService: EmpresasService) {
     this.EmpresaModelPost = new Usuarios('','','','','','',[{nombreProducto: '', nombreProveedor: '', stock:0}]);
+    this.EmpresasModelGetId = new Usuarios('','','','','','',[{nombreProducto: '', nombreProveedor: '', stock:0}]);
     this.token = this._EmpresasService.obtenerToken()
   }
 
@@ -44,6 +46,31 @@ export class EmpresasComponent implements OnInit {
       }
     )
   }
+
+  getEmpresasId(idEmpresa){
+    this._EmpresasService.obtenerEmpresaId(idEmpresa, this._EmpresasService.obtenerToken()).subscribe(
+      (response)=>{
+        console.log(response);
+        this.EmpresasModelGetId = response.empresa;
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  }
+
+  putEmpresas(){
+    this._EmpresasService.editarEmpresas(this.EmpresasModelGetId, this._EmpresasService.obtenerToken()).subscribe(
+      (response)=>{
+        console.log(response);
+        this.getEmpresas();
+      },
+      (error)=>{
+        console.log(<any>error);
+      }
+    )
+  }
+
 
   postEmpresas(){
     this._EmpresasService.agregarEmpresasAdmin(this.EmpresaModelPost, this._EmpresasService.obtenerToken()).subscribe(

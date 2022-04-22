@@ -9,13 +9,17 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { FormsModule } from '@angular/forms';
+import { ProductosEmpresaComponent } from './components/productos-empresa/productos-empresa.component';
+import { ProductosSucursalesComponent } from './components/productos-sucursales/productos-sucursales.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     InicioComponent,
     DashboardComponent,
-    EmpresasComponent
+    EmpresasComponent,
+    ProductosEmpresaComponent,
+    ProductosSucursalesComponent
   ],
   imports: [
     BrowserModule,
