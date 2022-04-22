@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { productos } from '../models/productosEmpresa.model';
 
+import { productosSucursales } from '../models/productosSucursal.model';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -42,6 +45,15 @@ export class ProductosEmpresaService {
     let headersToken = this.headersVariable.set('Authorization',token)
 
     return this._http.delete(this.url + '/eliminarProducto/' + id, { headers: headersToken })
+  }
+
+  enviarProducto(id : String, modeloProducto: productosSucursales, token){
+    let parametros = JSON.stringify(modeloProducto);
+    console.log(parametros)
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.put(this.url + '/enviarProductos/' + id, parametros, { headers: headersToken})
+
   }
 
   obtenerToken(){

@@ -43,6 +43,7 @@
           </button>
 
           <button  class="btn btn-danger text-dark  mx-2"  (click)="deleteSucursales(suc._id)">Eliminar</button>
+          <button type="button" class="btn btn-primary"  [routerLink]="['/verProductos', suc._id]">Productos</button>
         </div>
       </div>
     </div>
@@ -86,7 +87,7 @@
 <!-- OffCanvas Editar Sucursal -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Sucursal</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -99,7 +100,7 @@
         <label for="inputDireccion" class="form-label">Dirrección</label>
         <input type="text" class="form-control" id="inputDireccion" name="direccionSucursal" #direccionSucursal="ngModel" [(ngModel)]="sucursalesModelGetId.direccionSucursal">
       </div>
-      <div>
+      <div class="mb-3">
         <label for="inputMunicipio" class="form-label">Municipio</label>
         <select class="form-select" id="inputMunicipio" name="municipio" #municipio="ngModel"  [(ngModel)]="sucursalesModelGetId.municipio">
           <option *ngFor="let municipio of municipios" value="{{ municipio.nombre }}" >{{municipio.nombre}}</option>

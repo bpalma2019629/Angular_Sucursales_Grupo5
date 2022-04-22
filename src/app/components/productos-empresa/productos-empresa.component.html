@@ -42,6 +42,7 @@
           </button>
 
           <button  class="btn btn-danger text-dark  mx-2"  (click)="deleteProductos(prod._id)">Eliminar</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEnviarProducto" (click)="getSucursales(); getProductosId(prod._id)">Enviar</button>
         </div>
       </div>
     </div>
@@ -79,6 +80,43 @@
     </div>
   </div>
 </div>
+
+
+
+<!-- Modal enviar Producto a sucursal-->
+<div class="modal fade" id="modalEnviarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enviar producto a sucursal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+           <p>Producto</p>
+           <h5>{{productosModelGetId.nombreProducto}}</h5>
+          </div>
+          <div class="mb-3">
+            <label for="inputCantidad" class="form-label">Cantidad</label>
+            <input type="number" value="1" min="1" max="{{ productosModelGetId.stock }}" class="form-control" id="inputCantidad" name="stock" #stock="ngModel" [(ngModel)]="productoSucursalModelPut.stock">
+          </div>
+          <div class="mb-3">
+            <label for="inputNombre" class="form-label">Sucursal</label>
+            <select class="form-select" name="nombreSucursal" #nombreSucursal="ngModel" [(ngModel)]="productoSucursalModelPut.nombreSucursal" >
+              <option *ngFor="let suc of sucursalesModelGet" value="{{ suc.nombreSucursal }}">{{ suc.nombreSucursal }}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="putEnviarProducto(productosModelGetId._id)">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- OffCanvas Editar Producto -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">

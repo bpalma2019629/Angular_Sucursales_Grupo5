@@ -9,6 +9,8 @@
             <a class="nav-link " routerLink="/login">Ingresar</a>
             <a class="nav-link active" >Empresas</a>
             <a class="nav-link " routerLink="/dashboard">Sucursales</a>
+
+            <a class="nav-link" routerLink="/productos" >Productos</a>
           </nav>
         </div>
       </header>
@@ -34,7 +36,8 @@
           <h5 class="card-title">{{emp.nombreEmpresa}}</h5>
           <p class="card-text">Tipo: {{emp.tipo}}</p>
           <a  class="btn btn-success mx-2 ">Ver</a>
-          <a  class="btn btn-warning mx-2 ">Editar</a>
+          <a  class="btn btn-warning mx-2 " data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+          aria-controls="offcanvasExample" (click)="getEmpresasId(emp._id)">Editar</a>
           <button  class="btn btn-danger text-dark  mx-2" (click)="deleteEmpresas(emp._id)">Eliminar</button>
         </div>
       </div>
@@ -80,5 +83,34 @@
         <button type="button" class="btn btn-primary" (click)="postEmpresas()" data-bs-dismiss="modal">Agregar</button>
       </div>
     </div>
+  </div>
+</div>
+
+
+<!-- OffCanvas Editar Empresa -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Empresa</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Nombre Empresa</label>
+            <input type="text" class="form-control" id="inputNombre" name="nombreEmpresa" #nombreEmpresa="ngModel" [(ngModel)]="EmpresasModelGetId.nombreEmpresa">
+      </div>
+      <div class="mb-3">
+        <label for="inputUsuario" class="form-label">Usuario</label>
+        <input type="text" class="form-control" id="inputUsuario" name="usuario" #usuario="ngModel" [(ngModel)]="EmpresasModelGetId.usuario">
+      </div>
+      <div class="mb-3">
+        <label for="inputTipo" class="form-label">Tipo</label>
+        <select class="form-select" name="tipo" #tipo="ngModel"  id="inputTipo" [(ngModel)]="EmpresasModelGetId.tipo" aria-label="Default select example">
+          <option selected ></option>
+          <option *ngFor="let tipo of tipos" value="{{ tipo.nombreTipo }}" >{{ tipo.nombreTipo }}</option>
+        </select>
+      </div>
+      <button class="btn btn-success"  (click)="putEmpresas()" data-bs-dismiss="offcanvas">Editar Empresa</button>
+    </form>
   </div>
 </div>
