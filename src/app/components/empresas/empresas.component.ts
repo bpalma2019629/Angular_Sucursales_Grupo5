@@ -24,7 +24,7 @@ export class EmpresasComponent implements OnInit {
   public EmpresaModelPost: Usuarios;
   public EmpresasModelGetId: Usuarios;
 
-  constructor(private _EmpresasService: EmpresasService) {
+  constructor(public _EmpresasService: EmpresasService) {
     this.EmpresaModelPost = new Usuarios('','','','','','',[{nombreProducto: '', nombreProveedor: '', stock:0}]);
     this.EmpresasModelGetId = new Usuarios('','','','','','',[{nombreProducto: '', nombreProveedor: '', stock:0}]);
     this.token = this._EmpresasService.obtenerToken()
@@ -35,7 +35,7 @@ export class EmpresasComponent implements OnInit {
   }
 
   getEmpresas(){
-    this._EmpresasService.obtenerEmpresas().subscribe(
+    this._EmpresasService.obtenerEmpresas(this._EmpresasService.obtenerToken()).subscribe(
       (response) => {
         this.EmpresasModelGet = response.empresas;
         console.log(this.EmpresasModelGet);

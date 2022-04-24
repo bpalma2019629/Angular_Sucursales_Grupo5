@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductosEmpresaComponent } from './components/productos-empresa/productos-empresa.component';
 
 import { ProductosSucursalesComponent } from './components/productos-sucursales/productos-sucursales.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { ProductosSucursalesComponent } from './components/productos-sucursales/
     DashboardComponent,
     EmpresasComponent,
     ProductosEmpresaComponent,
-    ProductosSucursalesComponent
+    ProductosSucursalesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

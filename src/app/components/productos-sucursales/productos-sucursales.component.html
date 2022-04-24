@@ -1,41 +1,45 @@
-<div class="fondo">
-  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center text-white">
-      <header class="mb-auto">
-        <div>
-          <h3 class="float-md-start mb-0"> <img class="align-middle" src="/assets/img/guatemala.png" alt="">  Sucursales Guatemala</h3>
-          <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link" routerLink=""  aria-current="page">Inicio</a>
-            <a class="nav-link " routerLink="/login">Ingresar</a>
-            <a class="nav-link" routerLink="/empresas" >Empresas</a>
-            <a class="nav-link" routerLink="/dashboard">Sucursales</a>
-            <a class="nav-link" routerLink="/productos">Productos</a>
-          </nav>
-        </div>
-      </header>
-        </div>
-</div>
+<app-navbar></app-navbar>
 
-<div class="row py-5">
-  <div class="col-lg-11 mx-auto">
-    <div class="p-5 shadow-sm rounded banner text-white text-center">
-          <h1 class="display-1 ">Productos de la sucursal</h1>
-    </div>
+ <!-- page-header -->
+ <div class="page-header">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="page-caption">
+                  <h1 class="page-title"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+                    <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z"/>
+                  </svg> PRODUCTOS DE LA SUCURSAL</h1>
+              </div>
+          </div>
+      </div>
   </div>
-</div>
+</div> <br>
+
 
 <div class="container">
-  <button class="btn btn-primary" type="button" routerLink="/dashboard">Regresar</button>
+  <button class="btn btn-success" type="button" routerLink="/dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+  </svg> Regresar</button>
 
 
   <div class="row">
-    <div class="col-12 col-md-4 py-3" *ngFor="let prod of productosModelGet">
-      <div class="card text-center mb-4 tarjeta">
-        <h5 class="card-header header-tarjeta">{{ prod._id }}</h5>
-        <div class="card-body">
-          <h5 class="card-title">{{prod.nombreProducto}}</h5>
-          <p class="card-text">stock: {{prod.stock}}</p>
-        </div>
-      </div>
+    <div class="col-12 col-md-12 py-3">
+      <table class="table table-secondary table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Stock en Sucursal</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prod of productosModelGet">
+              <th scope="row">{{ prod._id }}</th>
+              <td>{{prod.nombreProducto}}</td>
+              <td>{{prod.stock}}</td>
+            </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -1,51 +1,69 @@
+<app-navbar></app-navbar>
 
-<div class="fondo">
-  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center text-white">
-      <header class="mb-auto">
-        <div>
-          <h3 class="float-md-start mb-0"> <img class="align-middle" src="/assets/img/guatemala.png" alt="">  Sucursales Guatemala</h3>
-          <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link" routerLink=""  aria-current="page">Inicio</a>
-            <a class="nav-link " routerLink="/login">Ingresar</a>
-            <a class="nav-link" routerLink="/empresas" >Empresas</a>
-            <a class="nav-link active">Sucursales</a>
-            <a class="nav-link" routerLink="/productos" >Productos</a>
-          </nav>
-        </div>
-      </header>
-        </div>
-</div>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-<div class="row py-5">
-  <div class="col-lg-11 mx-auto">
-    <div class="p-5 shadow-sm rounded banner text-white text-center">
-          <h1 class="display-1 ">Sucursales</h1>
-    </div>
-  </div>
-</div>
+ <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-caption">
+                        <h1 class="page-title"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-shop-window" viewBox="0 0 16 16">
+                          <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zm2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5z"/>
+                        </svg> SUCURSALES</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <br>
 
 <div class="container">
-  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursal">Agregar Sucursal</button>
+  <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+  </svg> Agregar Sucursal</button>
 
   <div class="row">
-    <div class="col-12 col-md-4 py-3" *ngFor="let suc of sucursalesModelGet">
-      <div class="card text-center mb-4 tarjeta">
-        <h5 class="card-header header-tarjeta">{{ suc._id }}</h5>
-        <div class="card-body">
-          <h5 class="card-title">{{suc.nombreSucursal}}</h5>
-          <p class="card-text">direccion: {{suc.direccionSucursal}}</p>
-          <p class="card-text">municipio: {{suc.municipio}}</p>
-          <a  class="btn btn-success mx-2 ">Ver</a>
+    <div class="col-12 col-md-12 py-3" *ngFor="let suc of sucursalesModelGet">
 
-          <button type="button" class="btn btn-warning mx-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-              aria-controls="offcanvasExample" (click)="getSucursalesId(suc._id)">
+
+      <article class="postcard dark red">
+        <a class="postcard__img_link">
+          <img class="postcard__img" src="https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80" alt="Image Title" />
+        </a>
+        <div class="postcard__text">
+          <h1 >{{ suc.nombreSucursal}}</h1>
+          <div class="postcard__subtitle small">
+            <time datetime="2020-05-25 12:00:00">
+              <i class="fas fa-calendar-alt mr-2"></i>{{ suc._id }}
+            </time>
+          </div>
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">Direccion: {{ suc.direccionSucursal }}</div>
+          <div class="postcard__preview-txt">Municipio: {{ suc.municipio }}</div>
+          <ul class="postcard__tagbox">
+            <button  class="btn btn-outline-success mx-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+            </svg> Ver</button>
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample" (click)="getSucursalesId(suc._id)"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+              </svg>
               Editar
-          </button>
-
-          <button  class="btn btn-danger text-dark  mx-2"  (click)="deleteSucursales(suc._id)">Eliminar</button>
-          <button type="button" class="btn btn-primary"  [routerLink]="['/verProductos', suc._id]">Productos</button>
+            </button>
+            <button  class="btn btn-outline-danger mx-2"  (click)="deleteSucursales(suc._id)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+              <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+            </svg> Eliminar
+            </button>
+            <button type="button" class="btn btn-outline-info"  [routerLink]="['/verProductos', suc._id]"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+              <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z"/>
+            </svg> Productos</button>
+          </ul>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </div>
@@ -53,23 +71,23 @@
 <!-- Modal Agregar Empresa-->
 <div class="modal fade" id="modalAgregarSucursal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content bg-dark">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar Sucursal</h5>
+        <h5 class="modal-title text-light" id="exampleModalLabel">Agregar Sucursal</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form>
-          <div class="mb-3">
+          <div class="mb-3 text-light">
             <label for="inputNombre" class="form-label">Nombre Sucursal</label>
-            <input type="text" class="form-control" id="inputNombre" name="nombreSucursal" #nombreSucursal="ngModel" [(ngModel)]="sucursalesModelPost.nombreSucursal">
+            <input type="text" class="form-control" id="inputNombre" name="nombreSucursal" #nombreSucursal="ngModel" [(ngModel)]="sucursalesModelPost.nombreSucursal" autocomplete="off">
           </div>
-          <div class="mb-3">
+          <div class="mb-3 text-light">
             <label for="inputDireccion" class="form-label">Dirrección</label>
-            <input type="text" class="form-control" id="inputDireccion" name="direccionSucursal" #direccionSucursal="ngModel" [(ngModel)]="sucursalesModelPost.direccionSucursal">
+            <input type="text" class="form-control" id="inputDireccion" name="direccionSucursal" #direccionSucursal="ngModel" [(ngModel)]="sucursalesModelPost.direccionSucursal" autocomplete="off">
           </div>
           <div>
-            <label for="inputMunicipio" class="form-label">Municipio</label>
+            <label for="inputMunicipio" class="form-label text-light">Municipio</label>
             <select class="form-select" id="inputMunicipio" name="municipio" #municipio="ngModel"  [(ngModel)]="sucursalesModelPost.municipio">
               <option *ngFor="let municipio of municipios" value="{{ municipio.nombre }}" >{{municipio.nombre}}</option>
             </select>
@@ -77,7 +95,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary" (click)="postSucursales()" data-bs-dismiss="modal">Agregar</button>
       </div>
     </div>
@@ -87,7 +105,7 @@
 <!-- OffCanvas Editar Sucursal -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Sucursal</h5>
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -100,7 +118,7 @@
         <label for="inputDireccion" class="form-label">Dirrección</label>
         <input type="text" class="form-control" id="inputDireccion" name="direccionSucursal" #direccionSucursal="ngModel" [(ngModel)]="sucursalesModelGetId.direccionSucursal">
       </div>
-      <div class="mb-3">
+      <div>
         <label for="inputMunicipio" class="form-label">Municipio</label>
         <select class="form-select" id="inputMunicipio" name="municipio" #municipio="ngModel"  [(ngModel)]="sucursalesModelGetId.municipio">
           <option *ngFor="let municipio of municipios" value="{{ municipio.nombre }}" >{{municipio.nombre}}</option>

@@ -1,0 +1,42 @@
+<div class="area"></div><nav class="main-menu">
+  <ul>
+      <li class="has-subnav" *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Admin'">
+          <a class="nav-link " routerLink="/empresas">
+              <i class="fa fa-building-o fa-2x "></i>
+              <span class="nav-text">
+                  Empresas
+              </span>
+          </a>
+
+        </li>
+        <li class="has-subnav" *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Empresa'">
+          <a class="nav-link " routerLink="/dashboard">
+             <i class="fa fa-sitemap fa-2x"></i>
+              <span class="nav-text">
+                  Sucursales
+              </span>
+          </a>
+
+      </li>
+      <li class="has-subnav" *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Empresa'">
+          <a class="nav-link" routerLink="/productos">
+             <i class="fa fa-shopping-cart fa-2x"></i>
+              <span class="nav-text">
+                  Productos
+              </span>
+          </a>
+
+      </li>
+  </ul>
+
+  <ul class="logout">
+      <li>
+         <a class="nav-link " routerLink="/login">
+               <i class="fa fa-power-off fa-2x"></i>
+              <span class="nav-text">
+                  Cerrar Sesión
+              </span>
+          </a>
+        </li>
+  </ul>
+</nav>
