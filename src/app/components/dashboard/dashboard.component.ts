@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { sucursales } from 'src/app/models/sucursales.model';
 import { DashboardService } from 'src/app/services/dashboard.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-dashboard',
@@ -49,7 +50,11 @@ export class DashboardComponent implements OnInit {
 
       },
       (error)=>{
-        console.log(<any>error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -61,7 +66,11 @@ export class DashboardComponent implements OnInit {
         this.sucursalesModelGetId = response.sucursales;
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -73,7 +82,11 @@ export class DashboardComponent implements OnInit {
         this.getSucursales();
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -85,7 +98,11 @@ export class DashboardComponent implements OnInit {
         this.getSucursales();
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -97,7 +114,11 @@ export class DashboardComponent implements OnInit {
         this.getSucursales();
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
 
       }
     )

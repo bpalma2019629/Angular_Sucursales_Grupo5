@@ -1,3 +1,10 @@
 .page-header { background: url("../../../../src/assets/img/productos.jpg"), no-repeat; position: relative; background-size: cover; }
 .page-caption { padding-top: 110px; padding-bottom: 100px; }
 .page-title { font-size: 60px; line-height: 1; color: #fff; font-weight: 600; text-align: center; }
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}

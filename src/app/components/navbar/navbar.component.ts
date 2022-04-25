@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpresasService } from 'src/app/services/empresas.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-navbar',

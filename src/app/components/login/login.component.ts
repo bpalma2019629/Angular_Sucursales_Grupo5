@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmpresasService } from 'src/app/services/empresas.service';
 import { Usuarios } from 'src/app/models/usuarios.model';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -87,7 +88,11 @@ export class LoginComponent implements OnInit {
 
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -103,7 +108,11 @@ export class LoginComponent implements OnInit {
     });
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }

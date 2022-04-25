@@ -4,6 +4,7 @@ import { sucursales } from 'src/app/models/sucursales.model';
 import { productosSucursales } from 'src/app/models/productosSucursal.model';
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { ProductosEmpresaService } from 'src/app/services/productos-empresa.service';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -36,7 +37,11 @@ export class ProductosEmpresaComponent implements OnInit {
 
       },
       (error)=>{
-        console.log(<any>error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -48,7 +53,11 @@ export class ProductosEmpresaComponent implements OnInit {
         this.getProductos();
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -61,7 +70,11 @@ export class ProductosEmpresaComponent implements OnInit {
         console.log(this.productosModelGet);
       },
       (error) => {
-        console.log(<any>error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -73,7 +86,11 @@ export class ProductosEmpresaComponent implements OnInit {
         this.productosModelGetId = response.productos;
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -85,7 +102,11 @@ export class ProductosEmpresaComponent implements OnInit {
         this.getProductos();
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -97,7 +118,11 @@ export class ProductosEmpresaComponent implements OnInit {
         this.getProductos();
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }
@@ -109,7 +134,11 @@ export class ProductosEmpresaComponent implements OnInit {
         this.getProductos();
       },
       (error)=>{
-        console.log(<any>error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.mensaje
+        })
       }
     )
   }

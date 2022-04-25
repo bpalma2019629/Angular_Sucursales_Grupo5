@@ -30,6 +30,8 @@
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Stock en Sucursal</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -37,9 +39,12 @@
               <th scope="row">{{ prod._id }}</th>
               <td>{{prod.nombreProducto}}</td>
               <td>{{prod.stock}}</td>
+              <td><button class="btn btn-danger" (click)="deleteProductos(prod._id)">Eliminar</button></td>
+              <td><button class="btn btn-info">Vender</button></td>
             </tr>
         </tbody>
       </table>
     </div>
   </div>
+  <app-graficas></app-graficas>
 </div>

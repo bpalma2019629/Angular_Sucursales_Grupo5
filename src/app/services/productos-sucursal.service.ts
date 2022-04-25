@@ -20,6 +20,12 @@ export class ProductosSucursalService {
     return this._http.get(this.url + '/verProductosSucursales/'+ id, { headers: headersToken })
   }
 
+  eliminarProducto(id : String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization',token)
+
+    return this._http.delete(this.url + '/eliminarProductosSucursales/' + id, { headers: headersToken })
+  }
+
   obtenerToken(){
     var token2 = localStorage.getItem("token");
     if(token2 != undefined){
@@ -29,6 +35,18 @@ export class ProductosSucursalService {
     }
 
     return this.token;
+  }
+
+  obtenerProductoId(id : String): Observable<any> {
+
+    return this._http.get(this.url + '/verProductosSucuralesId/' + id, { headers: this.headersVariable })
+  }
+
+  vender(id : String, modeloProducto: productosSucursales, token): Observable<any> {
+    let parametros = JSON.stringify(modeloProducto);
+    console.log(parametros)
+    let headersToken = this.headersVariable.set('Authorization', token)
+    return this._http.put(this.url + '/verProductosEmpresa/' + id,parametros, { headers: headersToken })
   }
 
 }
