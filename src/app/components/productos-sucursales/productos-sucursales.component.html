@@ -17,9 +17,14 @@
 
 
 <div class="container">
-  <button class="btn btn-success" type="button" routerLink="/dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+  <button class="btn btn-success mb-3" type="button" routerLink="/dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
     <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
   </svg> Regresar</button>
+
+
+  <div class="input-group">
+    <input type="search" class="form-control rounded bg-dark text-light" placeholder="buscar" aria-label="buscar" aria-describedby="search-addon"  (input)="getProductosNombre($event.target.value)" />
+  </div>
 
 
   <div class="row">
@@ -40,11 +45,33 @@
               <td>{{prod.nombreProducto}}</td>
               <td>{{prod.stock}}</td>
               <td><button class="btn btn-danger" (click)="deleteProductos(prod._id)">Eliminar</button></td>
-              <td><button class="btn btn-info">Vender</button></td>
+              <td><button class="btn btn-info"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" (click)="getProductosId(prod._id)">Vender</button></td>
             </tr>
         </tbody>
       </table>
     </div>
   </div>
   <app-graficas></app-graficas>
+</div>
+
+<!-- OffCanvas Editar Producto -->
+<div class="offcanvas offcanvas-start bg-dark text-light" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Vender Producto</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class="mb-3">
+        <label for="inputNombre" class="form-label">Producto</label>
+        <h5>{{productosModelGetId.nombreProducto}}</h5>
+
+      </div>
+      <div class="mb-3">
+        <label for="inputDireccion" class="form-label">Cantidad</label>
+        <input type="number" value="1" min="1" max="{{ productosModelGetId.stock }}" class="form-control" id="inputCantidad" name="stock" #stock="ngModel" [(ngModel)]="productoSucursalModelPut.stock">
+      </div>
+      <button class="btn btn-success" (click)="putVender(productosModelGetId._id)" data-bs-dismiss="offcanvas">Vender Producto</button>
+    </form>
+  </div>
 </div>

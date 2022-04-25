@@ -46,7 +46,15 @@ export class ProductosSucursalService {
     let parametros = JSON.stringify(modeloProducto);
     console.log(parametros)
     let headersToken = this.headersVariable.set('Authorization', token)
-    return this._http.put(this.url + '/verProductosEmpresa/' + id,parametros, { headers: headersToken })
+    return this._http.put(this.url + '/venta/' + id,parametros, { headers: headersToken })
   }
+
+  obtenerProductosNombre(nombre: String, id:String, token): Observable<any>{
+    console.log(token)
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.get(this.url + '/productoSucursalNombre/'+nombre+'/'+id, { headers: headersToken })
+  }
+
 
 }

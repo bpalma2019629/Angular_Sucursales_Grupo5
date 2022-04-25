@@ -21,9 +21,13 @@
     </div> <br>
 
 <div class="container">
-  <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <button class="btn btn-light mb-3" type="button" data-bs-toggle="modal" data-bs-target="#modalAgregarSucursal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
   </svg> Agregar Sucursal</button>
+
+  <div class="input-group">
+    <input type="search" class="form-control rounded bg-dark text-light" placeholder="buscar" aria-label="buscar" aria-describedby="search-addon"  (input)="getSucursalesNombre($event.target.value)" />
+  </div>
 
   <div class="row">
     <div class="col-12 col-md-12 py-3" *ngFor="let suc of sucursalesModelGet">

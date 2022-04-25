@@ -95,6 +95,19 @@ export class ProductosEmpresaComponent implements OnInit {
     )
   }
 
+
+  getProductosNombre(nombre){
+    this._productosService.obtenerProductosNombre(nombre,  this._productosService.obtenerToken()).subscribe(
+      (response)=>{
+        this.productosModelGet = response.productos;
+        console.log(this.productosModelGet);
+      },
+      (error)=>{
+        this.getProductos();
+      }
+    )
+  }
+
   postProductos(){
     this._productosService.agregarProducto(this.productosModelPost, this._productosService.obtenerToken()).subscribe(
       (response)=>{

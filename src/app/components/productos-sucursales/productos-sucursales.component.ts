@@ -16,10 +16,13 @@ export class ProductosSucursalesComponent implements OnInit {
   public productosModelGet: productosSucursales;
   public token;
   constructor(
+
     public _activatedRoute : ActivatedRoute,
     public _productoService : ProductosSucursalService
 
   ) {
+    this.productosModelGetId = new productosSucursales('', '', 0, 0, '', '')
+    this.productoSucursalModelPut = new productosSucursales('', '', 0, 0, '', '')
     this.token = this._productoService.obtenerToken()
    }
 
@@ -78,6 +81,23 @@ export class ProductosSucursalesComponent implements OnInit {
         })
       }
     )
+  }
+
+
+
+  getProductosNombre(nombre){
+    this._activatedRoute.paramMap.subscribe((dataRuta) => {
+      this._productoService.obtenerProductosNombre(nombre,  dataRuta.get('idSucursal'), this._productoService.obtenerToken()).subscribe(
+        (response)=>{
+          this.productosModelGet = response.productos;
+          console.log(this.productosModelGet);
+        },
+        (error)=>{
+          this.getProductosSucursal(dataRuta.get('idSucursal'))
+        }
+      )
+    })
+
   }
 
   putVender(idProducto){
