@@ -22,10 +22,15 @@ export class ProductosEmpresaService {
     return this._http.get(this.url + '/verProductosEmpresa', { headers: headersToken })
   }
 
-  obtenerProductosNombre(nombre: String, token): Observable<any>{
+  obtenerProductosNombre(nombre: String, tipo: String, token): Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token)
 
-    return this._http.get(this.url + '/productoNombre/'+nombre, { headers: headersToken })
+    if(tipo=="Nombre"){
+      return this._http.get(this.url + '/productoNombre/'+nombre, { headers: headersToken })
+    }else{
+      return this._http.get(this.url + '/productoProveedor/'+nombre, { headers: headersToken })
+    }
+
   }
 
   obtenerProductoId(id : String): Observable<any> {

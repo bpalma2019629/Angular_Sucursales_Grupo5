@@ -15,12 +15,20 @@ import Swal from 'sweetalert2'
 })
 export class ProductosEmpresaComponent implements OnInit {
 
+  tipos = [
+    {nombre: 'Nombre'},
+    {nombre: 'Proveedor'},
+    {nombre: 'Stock mayor a menor'},
+    {nombre: 'Stock menor a mayor'}
+  ]
+
   public productosModelGet: productos;
   public productosModelPost: productos;
   public productosModelGetId: productos;
   public sucursalesModelGet: sucursales;
   public productoSucursalModelPut: productosSucursales;
   public token;
+  public tipoBusqueda;
 
   constructor(private _productosService: ProductosEmpresaService, private _dashboardService: DashboardService) {
     this.productosModelPost = new productos('','','',0,'');
@@ -66,7 +74,9 @@ export class ProductosEmpresaComponent implements OnInit {
   getProductos(){
     this._productosService.obtenerProductos(this._productosService.obtenerToken()).subscribe(
       (response) => {
-        this.productosModelGet = response.productos;
+          this.productosModelGet = response.productos;
+
+
         console.log(this.productosModelGet);
       },
       (error) => {
@@ -95,24 +105,55 @@ export class ProductosEmpresaComponent implements OnInit {
     )
   }
 
+  ordenar(){
+    this.getProductos();
+    if(this.tipoBusqueda=="Stock mayor a menor"||this.tipoBusqueda=="Stock menor a mayor"){
+      this._productosService.obtenerProductos(this._productosService.obtenerToken()).subscribe(
+        (response) => {
+          if(this.tipoBusqueda=="Stock mayor a menor"){
+            this.productosModelGet = response.productos.sort((a, b) => b.stock - a.stock);
+          }else{
+            this.productosModelGet = response.productos.sort((a, b) => a.stock - b.stock);
+          }
+
+          console.log(this.productosModelGet);
+        },
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.error.mensaje
+          })
+        }
+      )
+    }
+  }
+
 
   getProductosNombre(nombre){
-    this._productosService.obtenerProductosNombre(nombre,  this._productosService.obtenerToken()).subscribe(
-      (response)=>{
-        this.productosModelGet = response.productos;
-        console.log(this.productosModelGet);
-      },
-      (error)=>{
-        this.getProductos();
+    if(nombre){
+      if(this.tipoBusqueda=="Nombre"||this.tipoBusqueda=="Proveedor"){
+        this._productosService.obtenerProductosNombre(nombre, this.tipoBusqueda,  this._productosService.obtenerToken()).subscribe(
+          (response)=>{
+            this.productosModelGet = response.productos;
+            console.log(this.productosModelGet);
+          },
+          (error)=>{
+            this.getProductos();
+          }
+        )
       }
-    )
+    }else{
+      this.getProductos();
+    }
+
   }
 
   postProductos(){
     this._productosService.agregarProducto(this.productosModelPost, this._productosService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
-        this.getProductos();
+        this.ordenar();
       },
       (error)=>{
         Swal.fire({
@@ -128,7 +169,7 @@ export class ProductosEmpresaComponent implements OnInit {
     this._productosService.editarProducto(this.productosModelGetId, this._productosService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
-        this.getProductos();
+        this.ordenar();
       },
       (error)=>{
         Swal.fire({
@@ -144,7 +185,7 @@ export class ProductosEmpresaComponent implements OnInit {
     this._productosService.eliminarProducto(idProducto, this._productosService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
-        this.getProductos();
+        this.ordenar();
       },
       (error)=>{
         Swal.fire({
