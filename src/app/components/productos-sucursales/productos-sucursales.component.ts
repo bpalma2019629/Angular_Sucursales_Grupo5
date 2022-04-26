@@ -11,10 +11,18 @@ import Swal from 'sweetalert2'
   providers: [ProductosSucursalService]
 })
 export class ProductosSucursalesComponent implements OnInit {
+
+  tipos = [
+    {nombre: 'Nombre'},
+    {nombre: 'Stock mayor a menor'},
+    {nombre: 'Stock menor a mayor'}
+  ]
+
   public productosModelGetId: productosSucursales;
   public productoSucursalModelPut: productosSucursales;
   public productosModelGet: productosSucursales;
   public token;
+  public tipoBusqueda;
   constructor(
 
     public _activatedRoute : ActivatedRoute,
@@ -67,6 +75,34 @@ export class ProductosSucursalesComponent implements OnInit {
     )
   }
 
+  ordenar(){
+    this._activatedRoute.paramMap.subscribe((dataRuta) => {
+      this.getProductosSucursal(dataRuta.get('idSucursal'))
+    })
+    if(this.tipoBusqueda=="Stock mayor a menor"||this.tipoBusqueda=="Stock menor a mayor"){
+      this._activatedRoute.paramMap.subscribe((dataRuta) => {
+        this._productoService.obtenerProductos(dataRuta.get('idSucursal'), this._productoService.obtenerToken()).subscribe(
+          (response) => {
+            if(this.tipoBusqueda=="Stock mayor a menor"){
+              this.productosModelGet = response.productos.sort((a, b) => b.stock - a.stock);
+            }else{
+              this.productosModelGet = response.productos.sort((a, b) => a.stock - b.stock);
+            }
+
+            console.log(this.productosModelGet);
+          },
+          (error) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: error.error.mensaje
+            })
+          }
+        )
+      })
+    }
+  }
+
   getProductosId(idProducto){
     this._productoService.obtenerProductoId(idProducto).subscribe(
       (response)=>{
@@ -87,15 +123,22 @@ export class ProductosSucursalesComponent implements OnInit {
 
   getProductosNombre(nombre){
     this._activatedRoute.paramMap.subscribe((dataRuta) => {
-      this._productoService.obtenerProductosNombre(nombre,  dataRuta.get('idSucursal'), this._productoService.obtenerToken()).subscribe(
-        (response)=>{
-          this.productosModelGet = response.productos;
-          console.log(this.productosModelGet);
-        },
-        (error)=>{
-          this.getProductosSucursal(dataRuta.get('idSucursal'))
+      if(nombre){
+        if(this.tipoBusqueda=="Nombre"||this.tipoBusqueda=="Proveedor"){
+          this._productoService.obtenerProductosNombre(nombre,  dataRuta.get('idSucursal'), this._productoService.obtenerToken()).subscribe(
+            (response)=>{
+              this.productosModelGet = response.productos;
+              console.log(this.productosModelGet);
+            },
+            (error)=>{
+              this.getProductosSucursal(dataRuta.get('idSucursal'))
+            }
+          )
         }
-      )
+      }else{
+        this.getProductosSucursal(dataRuta.get('idSucursal'))
+      }
+
     })
 
   }
