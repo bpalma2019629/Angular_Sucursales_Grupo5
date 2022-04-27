@@ -26,15 +26,16 @@ export class DashboardService {
     return this._http.get(this.url + '/sucursalesNombre/'+nombre, { headers: headersToken })
   }
 
+  obtenerSucursalNombreAdmin(nombre : String, id: String, token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token)
+
+    return this._http.get(this.url + '/sucursalesNombreAdmin/'+id+'/'+nombre, { headers: headersToken })
+  }
+
+
   obtenerSucursalId(id : String): Observable<any> {
 
     return this._http.get(this.url + '/verSucursalesEmpresaId/' + id, { headers: this.headersVariable })
-  }
-
-  obtenerSucursalesAdmin(id:String, token): Observable<any>{
-    let headersToken = this.headersVariable.set('Authorization', token)
-
-    return this._http.get(this.url + '/verSucursalesEmpresa'+id, { headers: headersToken })
   }
 
   agregarSucursal(modeloSucursal:sucursales, token): Observable<any>{

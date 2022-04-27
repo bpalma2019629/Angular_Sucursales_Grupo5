@@ -44,15 +44,22 @@ export class DashboardAdminComponent implements OnInit {
     }
 
     getSucursalesNombre(nombre){
-      this._dashboardService.obtenerSucursalNombre(nombre,  this._dashboardService.obtenerToken()).subscribe(
-        (response)=>{
-          this.sucursalesModelGet = response.sucursales;
-          console.log(this.sucursalesModelGet);
-        },
-        (error)=>{
-          this.getSucursales();
-        }
-      )
+      if(nombre){
+        this._activatedRoute.paramMap.subscribe((dataRuta) => {
+          this._dashboardService.obtenerSucursalNombreAdmin(nombre, dataRuta.get('idEmpresa'), this._dashboardService.obtenerToken()).subscribe(
+            (response)=>{
+              this.sucursalesModelGet = response.sucursales;
+              console.log(this.sucursalesModelGet);
+            },
+            (error)=>{
+              console.log(error)
+              this.getSucursales();
+            }
+          )
+        })
+      }else{
+        this.getSucursales();
+      }
     }
 
   ngOnInit(): void {

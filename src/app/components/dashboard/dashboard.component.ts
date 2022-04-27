@@ -80,15 +80,20 @@ export class DashboardComponent implements OnInit {
 
 
   getSucursalesNombre(nombre){
-    this._dashboardService.obtenerSucursalNombre(nombre,  this._dashboardService.obtenerToken()).subscribe(
-      (response)=>{
-        this.sucursalesModelGet = response.sucursales;
-        console.log(this.sucursalesModelGet);
-      },
-      (error)=>{
-        this.getSucursales();
-      }
-    )
+    if(nombre){
+      this._dashboardService.obtenerSucursalNombre(nombre,  this._dashboardService.obtenerToken()).subscribe(
+        (response)=>{
+          this.sucursalesModelGet = response.sucursales;
+          console.log(this.sucursalesModelGet);
+        },
+        (error)=>{
+          this.getSucursales();
+        }
+      )
+    }else{
+      this.getSucursales();
+    }
+
   }
 
   postSucursales(){
