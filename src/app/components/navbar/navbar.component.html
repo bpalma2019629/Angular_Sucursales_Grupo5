@@ -1,5 +1,5 @@
 <div class="area"></div><nav class="main-menu">
-  <ul>
+  <ul *ngIf="_EmpresasService.obtenerIdentidad() != null">
       <li class="has-subnav" *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Admin'">
           <a class="nav-link " routerLink="/empresas">
               <i class="fa fa-building-o fa-2x "></i>

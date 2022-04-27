@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { sucursales } from 'src/app/models/sucursales.model';
 import { DashboardService } from 'src/app/services/dashboard.service';
 import Swal from 'sweetalert2'
@@ -36,7 +37,9 @@ export class DashboardComponent implements OnInit {
   public sucursalesModelGetId: sucursales;
   public token;
 
-  constructor(private _dashboardService: DashboardService) {
+  constructor(
+    private _dashboardService: DashboardService,
+    private _router: Router) {
     this.sucursalesModelPost = new sucursales('','', '', '', '')
     this.sucursalesModelGetId = new sucursales('','', '', '', '')
     this.token = this._dashboardService.obtenerToken()
