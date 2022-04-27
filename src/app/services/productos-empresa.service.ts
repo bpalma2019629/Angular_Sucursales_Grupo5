@@ -13,6 +13,7 @@ export class ProductosEmpresaService {
   public url: String = 'http://localhost:3000/api';
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
   public token;
+  public identidad;
 
   constructor(public _http: HttpClient) { }
 
@@ -76,6 +77,17 @@ export class ProductosEmpresaService {
     }
 
     return this.token;
+  }
+
+  obtenerIdentidad(){
+    var identidad2 = JSON.parse(localStorage.getItem('identidad'));
+    if(identidad2 != undefined){
+      this.identidad = identidad2;
+    } else {
+      this.identidad = null;
+    }
+
+    return this.identidad;
   }
 
 }

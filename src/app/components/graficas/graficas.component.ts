@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosSucursalService } from 'src/app/services/productos-sucursal.service';
 import { productosSucursales } from 'src/app/models/productosSucursal.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -28,14 +28,21 @@ export class GraficasComponent implements OnInit {
   chartLegend = true;
   chartPlugins = [];;
 
-  constructor(public _activatedRoute : ActivatedRoute,public _productoService : ProductosSucursalService)
+  constructor(public _activatedRoute : ActivatedRoute,public _productoService : ProductosSucursalService, private _router: Router)
   {this.token = this._productoService.obtenerToken() }
 
   ngOnInit(): void {
-    this._activatedRoute.paramMap.subscribe((dataRuta) => {
-      console.log(dataRuta.get('idSucursal'));
-      this.getProductosSucursal(dataRuta.get('idSucursal'))
-    })
+
+    if(this._productoService.obtenerIdentidad()==null){
+      this._router.navigate(['/']);
+    }else if(this._productoService.obtenerIdentidad().rol=="Admin"){
+      this._router.navigate(['/empresas']);
+    }else{
+      this._activatedRoute.paramMap.subscribe((dataRuta) => {
+        console.log(dataRuta.get('idSucursal'));
+        this.getProductosSucursal(dataRuta.get('idSucursal'))
+      })
+    }
   }
 
   getProductosSucursal(idSucursal){

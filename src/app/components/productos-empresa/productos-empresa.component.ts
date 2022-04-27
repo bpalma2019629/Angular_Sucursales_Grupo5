@@ -5,6 +5,7 @@ import { productosSucursales } from 'src/app/models/productosSucursal.model';
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { ProductosEmpresaService } from 'src/app/services/productos-empresa.service';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class ProductosEmpresaComponent implements OnInit {
   public token;
   public tipoBusqueda;
 
-  constructor(private _productosService: ProductosEmpresaService, private _dashboardService: DashboardService) {
+  constructor(private _productosService: ProductosEmpresaService, private _dashboardService: DashboardService, private _router: Router) {
     this.productosModelPost = new productos('','','',0,'');
     this.productosModelGetId = new productos('','','',0,'');
     this.productoSucursalModelPut = new productosSucursales('', '', 0, 0, '', '')
@@ -198,7 +199,13 @@ export class ProductosEmpresaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getProductos();
+    if(this._productosService.obtenerIdentidad()==null){
+      this._router.navigate(['/']);
+    }else if(this._productosService.obtenerIdentidad().rol=="Admin"){
+      this._router.navigate(['/empresas']);
+    }else{
+      this.getProductos();
+    }
   }
 
 }

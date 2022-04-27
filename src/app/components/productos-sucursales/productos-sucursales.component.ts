@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductosSucursalService } from 'src/app/services/productos-sucursal.service';
 import { productosSucursales } from 'src/app/models/productosSucursal.model';
 import Swal from 'sweetalert2'
@@ -26,7 +26,8 @@ export class ProductosSucursalesComponent implements OnInit {
   constructor(
 
     public _activatedRoute : ActivatedRoute,
-    public _productoService : ProductosSucursalService
+    public _productoService : ProductosSucursalService,
+    private _router: Router
 
   ) {
     this.productosModelGetId = new productosSucursales('', '', 0, 0, '', '')
@@ -35,10 +36,17 @@ export class ProductosSucursalesComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this._activatedRoute.paramMap.subscribe((dataRuta) => {
-      console.log(dataRuta.get('idSucursal'));
-      this.getProductosSucursal(dataRuta.get('idSucursal'))
-    })
+
+    if(this._productoService.obtenerIdentidad()==null){
+      this._router.navigate(['/']);
+    }else if(this._productoService.obtenerIdentidad().rol=="Admin"){
+      this._router.navigate(['/empresas']);
+    }else{
+      this._activatedRoute.paramMap.subscribe((dataRuta) => {
+        console.log(dataRuta.get('idSucursal'));
+        this.getProductosSucursal(dataRuta.get('idSucursal'))
+      })
+    }
   }
   refresh(): void { window.location.reload(); }
 
