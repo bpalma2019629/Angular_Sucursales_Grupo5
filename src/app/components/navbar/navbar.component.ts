@@ -5,11 +5,13 @@ import Swal from 'sweetalert2'
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
+  providers: [ EmpresasService ]
 })
 export class NavbarComponent implements OnInit {
 
   public identidad;
+  public usuario;
 
   constructor(public _EmpresasService: EmpresasService) {
     this.identidad = this._EmpresasService.obtenerIdentidad();
@@ -17,6 +19,7 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.usuario = this._EmpresasService.obtenerIdentidad().usuario;
   }
 
 }
