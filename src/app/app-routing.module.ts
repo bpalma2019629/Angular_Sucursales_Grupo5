@@ -11,12 +11,14 @@ import { ProductosSucursalesComponent } from './components/productos-sucursales/
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: '', component: InicioComponent },
+  { path: '', redirectTo: 'inicio',  pathMatch: 'full'},
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'inicio', component: InicioComponent },
   { path: 'empresas', component: EmpresasComponent},
   { path: 'productos', component: ProductosEmpresaComponent},
   { path: 'verProductos/:idSucursal', component: ProductosSucursalesComponent},
   {path: 'graficas', component: GraficasComponent},
+  { path: '**', component: DashboardComponent}
 ];
 
 @NgModule({
