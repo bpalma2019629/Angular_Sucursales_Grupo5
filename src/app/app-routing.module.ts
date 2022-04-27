@@ -8,11 +8,13 @@ import { EmpresasComponent} from './components/empresas/empresas.component';
 import { ProductosEmpresaComponent } from './components/productos-empresa/productos-empresa.component';
 import{ GraficasComponent} from './components/graficas/graficas.component';
 import { ProductosSucursalesComponent } from './components/productos-sucursales/productos-sucursales.component';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'inicio',  pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent},
+  { path: 'verSucursales/:idEmpresa', component: DashboardAdminComponent},
   { path: 'inicio', component: InicioComponent },
   { path: 'empresas', component: EmpresasComponent},
   { path: 'productos', component: ProductosEmpresaComponent},

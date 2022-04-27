@@ -14,10 +14,10 @@ export class DashboardService {
 
   constructor(public _http: HttpClient) { }
 
-  obtenerSucursales(token): Observable<any>{
+  obtenerSucursales(token, id?: String): Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token)
 
-    return this._http.get(this.url + '/verSucursalesEmpresa', { headers: headersToken })
+    return this._http.get(this.url + '/verSucursalesEmpresa/'+id, { headers: headersToken })
   }
 
   obtenerSucursalNombre(nombre : String, token): Observable<any> {

@@ -14,6 +14,8 @@ import { ChartsModule } from '@rinminase/ng-charts';
 import { ProductosSucursalesComponent } from './components/productos-sucursales/productos-sucursales.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GraficasComponent } from './components/graficas/graficas.component';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { GraficasComponent } from './components/graficas/graficas.component';
     ProductosEmpresaComponent,
     ProductosSucursalesComponent,
     NavbarComponent,
-    GraficasComponent
+    GraficasComponent,
+    DashboardAdminComponent
   ],
   imports: [
     BrowserModule,
