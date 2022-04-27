@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuarios } from 'src/app/models/usuarios.model';
 import { EmpresasService } from 'src/app/services/empresas.service';
 import Swal from 'sweetalert2'
@@ -25,14 +26,20 @@ export class EmpresasComponent implements OnInit {
   public EmpresaModelPost: Usuarios;
   public EmpresasModelGetId: Usuarios;
 
-  constructor(public _EmpresasService: EmpresasService) {
+  constructor(public _EmpresasService: EmpresasService, private _router: Router) {
     this.EmpresaModelPost = new Usuarios('','','','','','',[{nombreProducto: '', nombreProveedor: '', stock:0}]);
     this.EmpresasModelGetId = new Usuarios('','','','','','',[{nombreProducto: '', nombreProveedor: '', stock:0}]);
     this.token = this._EmpresasService.obtenerToken()
   }
 
   ngOnInit(): void {
-    this.getEmpresas();
+    if(this._EmpresasService.obtenerIdentidad()==null){
+      this._router.navigate(['/']);
+    }else if(this._EmpresasService.obtenerIdentidad().rol=="Empresa"){
+      this._router.navigate(['/dashboard']);
+    }else{
+      this.getEmpresas();
+    }
   }
 
   getEmpresas(){
