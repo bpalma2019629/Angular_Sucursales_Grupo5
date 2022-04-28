@@ -15,6 +15,7 @@ import { ProductosSucursalesComponent } from './components/productos-sucursales/
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { GraficasComponent } from './components/graficas/graficas.component';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { UsuarioEditarComponent } from './components/usuario-editar/usuario-editar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-
     ProductosSucursalesComponent,
     NavbarComponent,
     GraficasComponent,
-    DashboardAdminComponent
+    DashboardAdminComponent,
+    UsuarioEditarComponent
   ],
   imports: [
     BrowserModule,

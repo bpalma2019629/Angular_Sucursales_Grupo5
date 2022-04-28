@@ -29,15 +29,23 @@
       </li>
   </ul>
 
-  <ul class="user">
+  <ul class="user" *ngIf="_EmpresasService.obtenerIdentidad() != null">
     <li>
-       <a class="nav-link " routerLink="/login">
+       <a class="nav-link " *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Empresa'" routerLink="/editarUsuario">
              <i class="fa fa-user fa-2x"></i>
             <span class="nav-text">
                 {{usuario}}
             </span>
         </a>
       </li>
+      <li>
+        <a class="nav-link " *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Admin'">
+              <i class="fa fa-user fa-2x"></i>
+             <span class="nav-text">
+                 {{usuario}}
+             </span>
+         </a>
+       </li>
 </ul>
 
   <ul class="logout">
