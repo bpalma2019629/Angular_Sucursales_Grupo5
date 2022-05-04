@@ -77,7 +77,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #addSucursalForm="ngForm">
           <div class="mb-3 text-light">
             <label for="inputNombre" class="form-label">Nombre Sucursal</label>
             <input type="text" class="form-control" id="inputNombre" name="nombreSucursal" #nombreSucursal="ngModel" [(ngModel)]="sucursalesModelPost.nombreSucursal" autocomplete="off">
@@ -96,7 +96,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="postSucursales()" data-bs-dismiss="modal">Agregar</button>
+        <button type="button" class="btn btn-primary" (click)="postSucursales(addSucursalForm)" data-bs-dismiss="modal">Agregar</button>
       </div>
     </div>
   </div>

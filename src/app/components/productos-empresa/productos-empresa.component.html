@@ -73,7 +73,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #addProductoEmp="ngForm">
           <div class="mb-3 text-light">
             <label for="inputNombre" class="form-label">Nombre Producto</label>
             <input type="text" class="form-control" id="inputNombre" name="nombreProducto" #nombreProducto="ngModel" [(ngModel)]="productosModelPost.nombreProducto" autocomplete="off">
@@ -90,7 +90,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="postProductos()" data-bs-dismiss="modal">Agregar</button>
+        <button type="button" class="btn btn-primary" (click)="postProductos(addProductoEmp)" data-bs-dismiss="modal">Agregar</button>
       </div>
     </div>
   </div>
@@ -107,7 +107,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #addProductoSuc>
           <div class="mb-3">
            <p>Producto</p>
            <h5>{{productosModelGetId.nombreProducto}}</h5>

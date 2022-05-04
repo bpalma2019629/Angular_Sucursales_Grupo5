@@ -92,10 +92,11 @@ export class EmpresasComponent implements OnInit {
   }
 
 
-  postEmpresas(){
+  postEmpresas(addEmpresaForm){
     this._EmpresasService.agregarEmpresasAdmin(this.EmpresaModelPost, this._EmpresasService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        addEmpresaForm.reset();
         this.getEmpresas();
       },
       (error)=>{

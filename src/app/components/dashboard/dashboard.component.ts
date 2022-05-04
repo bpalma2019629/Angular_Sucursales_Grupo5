@@ -96,10 +96,11 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  postSucursales(){
+  postSucursales(addSucursalForm){
     this._dashboardService.agregarSucursal(this.sucursalesModelPost, this._dashboardService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        addSucursalForm.reset();
         this.getSucursales();
       },
       (error)=>{

@@ -150,10 +150,11 @@ export class ProductosEmpresaComponent implements OnInit {
 
   }
 
-  postProductos(){
+  postProductos(addProductoEmp){
     this._productosService.agregarProducto(this.productosModelPost, this._productosService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        addProductoEmp.reset();
         this.ordenar();
       },
       (error)=>{

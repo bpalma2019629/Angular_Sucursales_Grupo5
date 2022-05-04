@@ -74,7 +74,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form #addEmpresaForm="ngForm">
           <div class="mb-3 text-light">
             <label for="inputNombre" class="form-label">Nombre Empresa</label>
             <input type="text" class="form-control" id="inputNombre" name="nombreEmpresa" #nombreEmpresa="ngModel" [(ngModel)]="EmpresaModelPost.nombreEmpresa" autocomplete="off">
@@ -99,7 +99,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="postEmpresas()" data-bs-dismiss="modal">Agregar</button>
+        <button type="button" class="btn btn-primary" (click)="postEmpresas(addEmpresaForm)" data-bs-dismiss="modal">Agregar</button>
       </div>
     </div>
   </div>

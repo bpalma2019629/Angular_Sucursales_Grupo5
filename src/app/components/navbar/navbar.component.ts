@@ -22,4 +22,8 @@ export class NavbarComponent implements OnInit {
     this.usuario = this._EmpresasService.obtenerIdentidad().usuario;
   }
 
+  logOut(){
+    localStorage.clear();
+  }
+
 }
