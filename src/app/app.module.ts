@@ -16,6 +16,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { GraficasComponent } from './components/graficas/graficas.component';
 import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
 import { UsuarioEditarComponent } from './components/usuario-editar/usuario-editar.component';
+import { InicioUsuarioComponent } from './components/inicio-usuario/inicio-usuario.component';
+import { InicioAdminComponent } from './components/inicio-admin/inicio-admin.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UsuarioEditarComponent } from './components/usuario-editar/usuario-edit
     NavbarComponent,
     GraficasComponent,
     DashboardAdminComponent,
-    UsuarioEditarComponent
+    UsuarioEditarComponent,
+    InicioUsuarioComponent,
+    InicioAdminComponent
   ],
   imports: [
     BrowserModule,

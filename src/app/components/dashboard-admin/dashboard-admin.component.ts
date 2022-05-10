@@ -63,13 +63,7 @@ export class DashboardAdminComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    if(this._dashboardService.obtenerIdentidad()==null){
-      this._router.navigate(['/']);
-    }else if(this._dashboardService.obtenerIdentidad().rol=="Empresa"){
-      this._router.navigate(['/dashboard']);
-    }else{
-      this.getSucursales();
-    }
+    this.getSucursales();
   }
 
 }

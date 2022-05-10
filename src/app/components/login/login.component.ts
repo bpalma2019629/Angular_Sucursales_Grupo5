@@ -80,9 +80,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("identidad", JSON.stringify(response.usuario))
 
           if(this._EmpresasService.obtenerIdentidad().rol=="Admin"){
-            this._router.navigate(['/empresas']);
+            this._router.navigate(['/admin/empresas']);
           }else{
-            this._router.navigate(['/dashboard']);
+            this._router.navigate(['/usuario/dashboard']);
           }
         })
 

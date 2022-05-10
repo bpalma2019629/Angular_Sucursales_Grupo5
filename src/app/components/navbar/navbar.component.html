@@ -1,7 +1,7 @@
 <div class="area"></div><nav class="main-menu">
   <ul *ngIf="_EmpresasService.obtenerIdentidad() != null">
       <li class="has-subnav" *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Admin'">
-          <a class="nav-link " routerLink="/empresas">
+          <a class="nav-link " routerLink="/admin/empresas">
               <i class="fa fa-building-o fa-2x "></i>
               <span class="nav-text">
                   Empresas
@@ -10,7 +10,7 @@
 
         </li>
         <li class="has-subnav" *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Empresa'">
-          <a class="nav-link " routerLink="/dashboard">
+          <a class="nav-link " routerLink="/usuario/dashboard">
              <i class="fa fa-sitemap fa-2x"></i>
               <span class="nav-text">
                   Sucursales
@@ -19,7 +19,7 @@
 
       </li>
       <li class="has-subnav" *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Empresa'">
-          <a class="nav-link" routerLink="/productos">
+          <a class="nav-link" routerLink="/usuario/productos">
              <i class="fa fa-shopping-cart fa-2x"></i>
               <span class="nav-text">
                   Productos
@@ -31,7 +31,7 @@
 
   <ul class="user" *ngIf="_EmpresasService.obtenerIdentidad() != null">
     <li>
-       <a class="nav-link " *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Empresa'" routerLink="/editarUsuario">
+       <a class="nav-link " *ngIf="_EmpresasService.obtenerIdentidad().rol === 'Empresa'" routerLink="/usuario/editarUsuario">
              <i class="fa fa-user fa-2x"></i>
             <span class="nav-text">
                 {{usuario}}
