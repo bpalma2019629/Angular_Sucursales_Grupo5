@@ -59,6 +59,11 @@ export class ProductosEmpresaComponent implements OnInit {
     this._productosService.enviarProducto(idProducto, this.productoSucursalModelPut, this._productosService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: '',
+          text: "se ha hecho el envio"
+        })
         this.getProductos();
       },
       (error)=>{
@@ -154,6 +159,11 @@ export class ProductosEmpresaComponent implements OnInit {
     this._productosService.agregarProducto(this.productosModelPost, this._productosService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: '',
+          text: "su producto se ha agregado exitosamente"
+        })
         addProductoEmp.reset();
         this.ordenar();
       },
@@ -171,6 +181,11 @@ export class ProductosEmpresaComponent implements OnInit {
     this._productosService.editarProducto(this.productosModelGetId, this._productosService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: '',
+          text: "su producto se ha editado exitosamente"
+        })
         this.ordenar();
       },
       (error)=>{
@@ -187,6 +202,11 @@ export class ProductosEmpresaComponent implements OnInit {
     this._productosService.eliminarProducto(idProducto, this._productosService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: '',
+          text: "su producto se ha eliminado exitosamente"
+        })
         this.ordenar();
       },
       (error)=>{

@@ -107,23 +107,23 @@
 
 
 <!-- OffCanvas Editar Empresa -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Empresa</h5>
+    <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">Editar Empresa</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     <form>
       <div class="mb-3">
-        <label for="inputNombre" class="form-label">Nombre Empresa</label>
+        <label for="inputNombre" class="form-label text-white">Nombre Empresa</label>
             <input type="text" class="form-control" id="inputNombre" name="nombreEmpresa" #nombreEmpresa="ngModel" [(ngModel)]="EmpresasModelGetId.nombreEmpresa">
       </div>
       <div class="mb-3">
-        <label for="inputUsuario" class="form-label">Usuario</label>
+        <label for="inputUsuario" class="form-label text-white">Usuario</label>
         <input type="text" class="form-control" id="inputUsuario" name="usuario" #usuario="ngModel" [(ngModel)]="EmpresasModelGetId.usuario">
       </div>
       <div class="mb-3">
-        <label for="inputTipo" class="form-label">Tipo</label>
+        <label for="inputTipo" class="form-label text-white">Tipo</label>
         <select class="form-select" name="tipo" #tipo="ngModel"  id="inputTipo" [(ngModel)]="EmpresasModelGetId.tipo" aria-label="Default select example">
           <option selected ></option>
           <option *ngFor="let tipo of tipos" value="{{ tipo.nombreTipo }}" >{{ tipo.nombreTipo }}</option>

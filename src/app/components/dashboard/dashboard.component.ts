@@ -100,6 +100,11 @@ export class DashboardComponent implements OnInit {
     this._dashboardService.agregarSucursal(this.sucursalesModelPost, this._dashboardService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: '',
+          text: "su sucursal se ha agregado exitosamente"
+        })
         addSucursalForm.reset();
         this.getSucursales();
       },
@@ -117,6 +122,11 @@ export class DashboardComponent implements OnInit {
     this._dashboardService.editarSucursal(this.sucursalesModelGetId, this._dashboardService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: '',
+          text: "su sucursal se ha editado exitosamente"
+        })
         this.getSucursales();
       },
       (error)=>{
@@ -133,6 +143,11 @@ export class DashboardComponent implements OnInit {
     this._dashboardService.eliminarSucursal(idSucursal, this._dashboardService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: '',
+          text: "su sucursal se ha eliminado exitosamente"
+        })
         this.getSucursales();
       },
       (error)=>{

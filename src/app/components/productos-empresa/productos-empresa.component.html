@@ -134,23 +134,23 @@
 
 
 <!-- OffCanvas Editar Producto -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Editar Producto</h5>
+    <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">Editar Producto</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     <form>
       <div class="mb-3">
-        <label for="inputNombre" class="form-label">Nombre Producto</label>
+        <label for="inputNombre" class="form-label text-white">Nombre Producto</label>
         <input type="text" class="form-control" id="inputNombre" name="nombreProducto" #nombreProducto="ngModel" [(ngModel)]="productosModelGetId.nombreProducto">
       </div>
       <div class="mb-3">
-        <label for="inputDireccion" class="form-label">Nombre Proveedor</label>
+        <label for="inputDireccion" class="form-label text-white">Nombre Proveedor</label>
         <input type="text" class="form-control" id="inputDireccion" name="nombreProveedor" #nombreProveedor="ngModel" [(ngModel)]="productosModelGetId.nombreProveedor">
       </div>
       <div class="mb-3">
-        <label for="inputDireccion" class="form-label">Stock</label>
+        <label for="inputDireccion" class="form-label text-white">Stock</label>
         <input type="number" min="0" class="form-control" id="inputDireccion" name="stock" #stock="ngModel" [(ngModel)]="productosModelGetId.stock">
       </div>
       <button class="btn btn-success" (click)="putProducto()" data-bs-dismiss="offcanvas">Editar Producto</button>

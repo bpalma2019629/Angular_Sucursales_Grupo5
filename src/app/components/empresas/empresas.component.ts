@@ -73,6 +73,11 @@ export class EmpresasComponent implements OnInit {
     this._EmpresasService.editarEmpresas(this.EmpresasModelGetId, this._EmpresasService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: '',
+          text: "su empresa se ha editado exitosamente"
+        })
         this.getEmpresas();
       },
       (error)=>{
@@ -90,6 +95,11 @@ export class EmpresasComponent implements OnInit {
     this._EmpresasService.agregarEmpresasAdmin(this.EmpresaModelPost, this._EmpresasService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: '',
+          text: "su empresa se ha agregado exitosamente"
+        })
         addEmpresaForm.reset();
         this.getEmpresas();
       },
@@ -107,6 +117,11 @@ export class EmpresasComponent implements OnInit {
     this._EmpresasService.eliminarEmpresa(idEmpresa, this._EmpresasService.obtenerToken()).subscribe(
       (response)=>{
         console.log(response);
+        Swal.fire({
+          icon: 'success',
+          title: '',
+          text: "su empresa se ha eliminado exitosamente"
+        })
         this.getEmpresas();
       },
       (error)=>{
