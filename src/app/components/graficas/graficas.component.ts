@@ -32,17 +32,10 @@ export class GraficasComponent implements OnInit {
   {this.token = this._productoService.obtenerToken() }
 
   ngOnInit(): void {
-
-    if(this._productoService.obtenerIdentidad()==null){
-      this._router.navigate(['/']);
-    }else if(this._productoService.obtenerIdentidad().rol=="Admin"){
-      this._router.navigate(['/empresas']);
-    }else{
-      this._activatedRoute.paramMap.subscribe((dataRuta) => {
-        console.log(dataRuta.get('idSucursal'));
-        this.getProductosSucursal(dataRuta.get('idSucursal'))
-      })
-    }
+    this._activatedRoute.paramMap.subscribe((dataRuta) => {
+      console.log(dataRuta.get('idSucursal'));
+      this.getProductosSucursal(dataRuta.get('idSucursal'))
+    })
   }
 
   getProductosSucursal(idSucursal){

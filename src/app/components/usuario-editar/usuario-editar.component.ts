@@ -57,6 +57,7 @@ export class UsuarioEditarComponent implements OnInit {
           title: 'Editado Correctamente',
           text: "su usario ha sido editado de manera satisfactoria"
         })
+        localStorage.setItem("identidad", JSON.stringify(response.usuario))
       },
       (error)=>{
         Swal.fire({

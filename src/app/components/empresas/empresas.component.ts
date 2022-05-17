@@ -33,13 +33,7 @@ export class EmpresasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this._EmpresasService.obtenerIdentidad()==null){
-      this._router.navigate(['/']);
-    }else if(this._EmpresasService.obtenerIdentidad().rol=="Empresa"){
-      this._router.navigate(['/dashboard']);
-    }else{
-      this.getEmpresas();
-    }
+    this.getEmpresas();
   }
 
   getEmpresas(){

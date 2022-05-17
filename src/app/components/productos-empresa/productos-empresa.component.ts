@@ -200,13 +200,7 @@ export class ProductosEmpresaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this._productosService.obtenerIdentidad()==null){
-      this._router.navigate(['/']);
-    }else if(this._productosService.obtenerIdentidad().rol=="Admin"){
-      this._router.navigate(['/empresas']);
-    }else{
-      this.getProductos();
-    }
+    this.getProductos();
   }
 
 }
