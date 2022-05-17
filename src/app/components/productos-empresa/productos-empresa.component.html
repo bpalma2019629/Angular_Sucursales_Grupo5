@@ -101,23 +101,23 @@
 <!-- Modal enviar Producto a sucursal-->
 <div class="modal fade" id="modalEnviarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content bg-dark">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Enviar producto a sucursal</h5>
+        <h5 class="modal-title text-white" id="exampleModalLabel">Enviar producto a sucursal</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form #addProductoSuc>
           <div class="mb-3">
-           <p>Producto</p>
-           <h5>{{productosModelGetId.nombreProducto}}</h5>
+           <p class="text-white">Producto</p>
+           <h5 class="text-white">{{productosModelGetId.nombreProducto}}</h5>
           </div>
           <div class="mb-3">
-            <label for="inputCantidad" class="form-label">Cantidad</label>
+            <label for="inputCantidad" class="form-label text-white">Cantidad</label>
             <input type="number" value="1" min="1" max="{{ productosModelGetId.stock }}" class="form-control" id="inputCantidad" name="stock" #stock="ngModel" [(ngModel)]="productoSucursalModelPut.stock">
           </div>
           <div class="mb-3">
-            <label for="inputNombre" class="form-label">Sucursal</label>
+            <label for="inputNombre" class="form-label text-white">Sucursal</label>
             <select class="form-select" name="nombreSucursal" #nombreSucursal="ngModel" [(ngModel)]="productoSucursalModelPut.nombreSucursal" >
               <option *ngFor="let suc of sucursalesModelGet" value="{{ suc.nombreSucursal }}">{{ suc.nombreSucursal }}</option>
             </select>
@@ -126,7 +126,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="putEnviarProducto(productosModelGetId._id)">Agregar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="putEnviarProducto(productosModelGetId._id)">Enviar</button>
       </div>
     </div>
   </div>
