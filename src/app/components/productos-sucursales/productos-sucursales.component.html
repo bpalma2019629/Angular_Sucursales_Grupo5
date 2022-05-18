@@ -55,8 +55,8 @@
             <th scope="row">{{ prod._id }}</th>
             <td>{{prod.nombreProducto}}</td>
             <td>{{prod.stock}}</td>
-            <td><button class="btn btn-danger" (click)="deleteProductos(prod._id)">Eliminar</button></td>
-            <td><button class="btn btn-info" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            <td><button class="btn btn-outline-danger" (click)="deleteProductos(prod._id)">Eliminar</button></td>
+            <td><button class="btn btn-outline-info" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                 (click)="getProductosId(prod._id)">Vender</button></td>
           </tr>
         </tbody>

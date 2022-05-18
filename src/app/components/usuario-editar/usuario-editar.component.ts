@@ -20,16 +20,20 @@ export class UsuarioEditarComponent implements OnInit {
   ];
 
   public token;
+  public usuario;
+  public identidad;
 
   public EmpresasModelGetId: Usuarios;
 
   constructor(public _EmpresasService: EmpresasService, private _router: Router) {
     this.EmpresasModelGetId = new Usuarios('','','','','','',[{nombreProducto: '', nombreProveedor: '', stock:0}]);
     this.token = this._EmpresasService.obtenerToken()
+    this.identidad = this._EmpresasService.obtenerIdentidad();
   }
 
   ngOnInit(): void {
     this.getEmpresasId(this._EmpresasService.obtenerIdentidad()._id);
+    this.identidad = this._EmpresasService.obtenerIdentidad();
   }
 
   getEmpresasId(idEmpresa){
@@ -57,7 +61,8 @@ export class UsuarioEditarComponent implements OnInit {
           title: 'Editado Correctamente',
           text: "su usario ha sido editado de manera satisfactoria"
         })
-        localStorage.setItem("identidad", JSON.stringify(response.usuario))
+        localStorage.setItem("identidad", JSON.stringify(response.usuario));
+        this.ngOnInit();
       },
       (error)=>{
         Swal.fire({
